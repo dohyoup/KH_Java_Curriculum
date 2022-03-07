@@ -1,4 +1,4 @@
-package exam04;
+package exam03;
 
 public class Sample03 {
 

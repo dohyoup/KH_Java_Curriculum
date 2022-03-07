@@ -1,23 +1,54 @@
 package exam03;
 
 public class Sample01 {
-
+// 형변환 내용
 	public static void main(String[] args) {
-		/*
-		 * 변수(Variable) : 값을 저장하기 위한 공간, 변수 공간을 만들 때 공간에 대한 이름을 지칭하여 사용 (변수명)
-		 * 공간에 저장되는 값은 언제든지 바뀔 수 있다.
-		 * 서럼 압정애소 값은 정수, 실수, 문자열 등의 값을 지칭 함
-		 * 가계 입장에서 값은 1011001101010 (2진수 값 - bit 값) 이다.
-		 * 
-		 * 저장된 값은 필요하면 언제든 "재사용" 할 수 있다.
-		 * 값이 긴 경우 짧은 변수명으로 사용할 수 있다.
-		 * 
-		 * 변수는 메모리 (RAM) 
-		 */
-		final int i2;
-		i2 =30;
-		String str =123+15+"출발";
-		System.out.println(str);
+		int i1 = 500;
+		byte b1;
+		
+		b1 = (byte)i1; // 강제 형변환
+		
+		System.out.println(i1);
+		System.out.println(b1);
+		
+		byte b2 = 100;
+		int i2;
+		
+		i2 = b2; // 자동 형변환
+		
+		System.out.println(i2);
+		System.out.println(b2);
+		
+		double d1 = 10.4;
+		int i3 = 5;
+		int i4;
+		
+	    i4 = (int)(i3+d1);
+	    System.out.println(i4);
+	  //--------------------------------------- 손실주의!!!  
+	    double d2 = 10.6;
+	    double d3 = 10.7;
+	    int i5, i6;
+	    
+	    i5 = (int)(d2 +d3);
+	    i6 = (int)d2 + (int)d3;
+	    
+	    System.out.println(i5);
+	    System.out.println(i6);
+	    
+	  //----------------------------------------boolean 형의 캐스팅은 안됨.
+	    int i7 = 0;
+	   // boolean b3 = (boolean)i7;
+	    
+	    String s2 = "100";
+	  //  i7 = (int)s2; // 문자열을 기본자료형으로 변환(캐스팅) 안됨.
+	    
+	    s2 = i7+""; // 캐스팅은 아니지만 기본타입을 문자열로 변환할 수 있다.
+	    System.out.println(s2);
+	    
+	    
+	    
+	    
 	}
 
 }

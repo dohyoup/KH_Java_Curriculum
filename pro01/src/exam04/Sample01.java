@@ -1,54 +1,40 @@
 package exam04;
-
+import java.util.Scanner;
 public class Sample01 {
-// 형변환 내용
+
+	// 이항 연산자 : 피연산자가 2개 있는 연산
+	// 1 + 1, 1 * 2, ...
 	public static void main(String[] args) {
-		int i1 = 500;
-		byte b1;
+		// 산술 연산자
+		// +, -, *, /(나누기), %(나머지)
+		Scanner sc = new Scanner(System.in);
+		int num1, num2;
+		num1 = sc.nextInt();
+		num2 = sc.nextInt();
+		 // Scanner 사용해서 사용자 입력을 받는 것으로 변경.
+		  // Scanner 사용해서 사용자 입력을 받는 것으로 변경.
 		
-		b1 = (byte)i1; // 강제 형변환
+		System.out.printf("%d + %d = %d\n", num1 ,num2, num1+num2);
+		System.out.printf("%d - %d = %d\n", num1 ,num2, num1-num2);
+		System.out.printf("%d * %d = %d\n", num1 ,num2, num1*num2);
+		System.out.printf("%d / %d = %.3f\n", num1 ,num2,(double)num1/num2); // 정수끼리 계산하고 결과값으로 실수 얻고 싶으면 double로 형변환 해줘야한다.
+		System.out.printf("%d %% %d = %d\n", num1 ,num2, num1%num2);
 		
-		System.out.println(i1);
-		System.out.println(b1);
 		
-		byte b2 = 100;
-		int i2;
+		// 비교 연산자
+		// ==(같다), !=(다르다), <(왼쪽 피연산자가 작다), >(왼쪽 피연산자가 크다),
+		// <=(왼쪽 피연산자가 작거나 같다), >=(왼쪽 피연산자가 크거나 같다)
+                   	
+		System.out.printf("%d == %d -> %b\n", num1, num2, num1 == num2 ); 
+										//비교연산자는 결과값이 boolean형이기 떄문에 %b를 쓴다.
+		System.out.printf("%d != %d -> %b\n", num1, num2, num1 != num2 );
+		System.out.printf("%d > %d -> %b\n", num1, num2, num1 > num2 );
+		System.out.printf("%d < %d -> %b\n", num1, num2, num1 < num2 );
+		System.out.printf("%d >= %d -> %b\n", num1, num2, num1 >= num2 );
+		System.out.printf("%d <= %d -> %b\n", num1, num2, num1 <= num2 );
 		
-		i2 = b2; // 자동 형변환
 		
-		System.out.println(i2);
-		System.out.println(b2);
 		
-		double d1 = 10.4;
-		int i3 = 5;
-		int i4;
-		
-	    i4 = (int)(i3+d1);
-	    System.out.println(i4);
-	  //--------------------------------------- 손실주의!!!  
-	    double d2 = 10.6;
-	    double d3 = 10.7;
-	    int i5, i6;
-	    
-	    i5 = (int)(d2 +d3);
-	    i6 = (int)d2 + (int)d3;
-	    
-	    System.out.println(i5);
-	    System.out.println(i6);
-	    
-	  //----------------------------------------boolean 형의 캐스팅은 안됨.
-	    int i7 = 0;
-	   // boolean b3 = (boolean)i7;
-	    
-	    String s2 = "100";
-	  //  i7 = (int)s2; // 문자열을 기본자료형으로 변환(캐스팅) 안됨.
-	    
-	    s2 = i7+""; // 캐스팅은 아니지만 기본타입을 문자열로 변환할 수 있다.
-	    System.out.println(s2);
-	    
-	    
-	    
-	    
 	}
 
 }

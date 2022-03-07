@@ -1,4 +1,4 @@
-package exam04;
+package exam03;
 
 public class Sample02 {
  //출력 메소드 내용
