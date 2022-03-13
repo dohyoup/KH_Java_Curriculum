@@ -1,5 +1,7 @@
 package exam05;
 
+import java.util.Scanner;
+
 public class Sample01 {
 
 	public static void main(String[] args) {
@@ -34,18 +36,22 @@ public class Sample01 {
 		 * 식1 : 조건식의 결과가 참(true)일 때 수행할 식을 작성 한다.
 		 * 식2 : 조건식의 결과가 거짓(false)일 때 수행할 식을 작성 한다.
 		 */
-		int age = 19;
-									//true		//false
+		int num3 = 15;
+		//위에 이미 String으로 정희해줘서 result만 써도댐
+		String number = num3 % 2 == 0 ? "짝수" : "홀수";
+		
+		System.out.printf("%d 는 %s 입니다.", num3, number);
+		
+			
+		Scanner sc = new Scanner(System.in);
+		System.out.print("나이를 입력하세요. : ");
+		int age = sc.nextInt();		
+		//true		//false
 		String result = age >= 20 ? "성인입니다." : "미성년자 입니다.";
 		System.out.println(result);
 		
-		int num3 = 15;
-		//위에 이미 String으로 정희해줘서 result만 써도댐
-		result = num3 % 2 == 0 ? "짝수" : "홀수";
 		
-		System.out.printf("%d 는 %s 입니다.", num3, result);
-		
-		
+			
 	}
 
 }
