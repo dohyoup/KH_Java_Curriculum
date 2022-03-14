@@ -10,8 +10,9 @@ public class Sample03 {
 		
 		
 		Scanner sc = new Scanner(System.in);
+		
 		System.out.print("사용자 이름을 입력하세요. : ");
-		String name;
+		String name ="";
 		name =sc.nextLine();
 		
 		while(true) {
