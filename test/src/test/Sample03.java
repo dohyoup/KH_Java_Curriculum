@@ -3,7 +3,6 @@ import java.util.Random;
 public class Sample03 {
 
 	public static void main(String[] args) {
-		//pro04-Sample09 해당
 		
 	/*
 	 * 배열의 크기가 5인 정수 배열을 생성하고 해당 배열에 1~19 까지의
@@ -15,9 +14,9 @@ public class Sample03 {
 		int[] arr1 = new int [5];
 		boolean duplicate;
 		
-		for(int i = 0; i < arr1.length;) {
+		for(int i = 0; i < arr1.length; ) {
 			int num = rand.nextInt(19)+1;
-			duplicate = false;
+			duplicate = false; // 이해 잘 못했음
 		//	arr1[i] = num; // 이부분 몰랐었음 =>같다라는 의미가아니라 넘값을 배열에 넣겠다는뜻
 			for(int j = 0; j < i; j++) {
 				if(arr1[j] == num)
