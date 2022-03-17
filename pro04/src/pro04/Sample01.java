@@ -42,6 +42,8 @@ public class Sample01 {
 			System.out.println(arr2[i] + "\t");
 		}
 		System.out.println("\n");
+		
+		String[] arr = new String[3];
 	}
 
 }

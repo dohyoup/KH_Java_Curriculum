@@ -31,10 +31,49 @@ public class Sample02 {
 		 */
 		int[] arr3 = arr1.clone();
 		for(int i = 0; i < arr3.length; i++) {
-			arr1[i] += arr2[i];
+			arr3[i] = arr1[i] + arr2[i];
+			
 		}
 		System.out.println("두 번째 출력");
 		System.out.println("\t" + Arrays.toString(arr3));
-
+		
+		/*
+		 * 3. 2번 문제까지 진행하여 만들어진 3개의 배열을 이용하여 짝수값만 저장되어 있는 배열과 홀수값만 저장
+		 *    되어 있는 배열을 만들고 짝수 배열과 홀수 배열을 출력한다.
+		 */
+		int[] arr4 = new int[30];
+		int[] arr5 = new int[30];
+		int num1 = 0; int num2 = 0;
+		for(int i = 0; i < arr1.length; i++) {
+				if(i % 2 == 0) {
+					arr4[num1] = arr1[i];
+					num1++;
+				}else{
+					arr5[num2] = arr1[i];
+					num2++;
+				}
+			}
+		for(int i = 0; i < arr2.length; i++) {
+			if(i % 2 == 0) {
+				arr4[num1] = arr2[i];
+				num1++;
+			}else{
+				arr5[num2] = arr2[i];
+				num2++;
+			}
+		}
+		for(int i = 0; i < arr3.length; i++) {
+			if(i % 2 == 0) {
+				arr4[num1] = arr3[i];
+				num1++;
+			}else{
+				arr5[num2] = arr3[i];
+				num2++;
+			}
+		}
+		System.out.println("세 번째 출력");
+		Arrays.copyOf(arr4, arr1.length);
+		System.out.println("\t" + Arrays.toString(arr4));
+		System.out.println("\t" + Arrays.toString(arr5));
    }
 }
