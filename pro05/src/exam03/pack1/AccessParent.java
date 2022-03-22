@@ -5,4 +5,6 @@ public class AccessParent {
 	protected int p2;
 	int p3; 
 	private int p4;
+
+int[]arr1 = new int[0];
 }
