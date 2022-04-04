@@ -1,7 +1,7 @@
 package exam09;
 
 public class PremiumCustomer extends Customer {
-private double discount;
+	private double discount;
 	
 	public PremiumCustomer(String name, int age, char gender) {
 		super(name, age, gender);
@@ -32,8 +32,59 @@ private double discount;
 	}
 
 	@Override
-	public void refound() {
+	public void modify(String productName, int count) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void remove(String productName) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String[] listUp() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String[] listUp(int count) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String search(String orderCode) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String pay(String productCode, int count) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void cancel(String produtCode) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void confirm(String payCode) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void refund(String productName) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+
 }

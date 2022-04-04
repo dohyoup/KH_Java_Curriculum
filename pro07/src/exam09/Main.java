@@ -2,8 +2,6 @@ package exam09;
 
 import java.util.Random;
 
-import exam04.Student;
-
 public class Main {
 
 	public static void main(String[] args) {

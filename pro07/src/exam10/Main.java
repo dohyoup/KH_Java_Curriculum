@@ -14,6 +14,9 @@ public class Main {
 		 * 	-인터페이스는 다중 상속이 가능하다.
 		 *  -인터페이스로 객체 생성은 할 수 없지만, 참조 타입으로는 사용할 수 있다.
 		 */
+		// Shape s1 = new Shape(); 객체생성이 불가능하기 때문에 이런식으로는 작성이 불가능 하다.
+		Shape s2 = new Circle();
+		Shape s3 = new Square();
 	}
 
 }

@@ -1,6 +1,6 @@
 package exam09;
 
-public abstract class Customer {
+public abstract class Customer implements Basket, Delivery, Payment {
 	private String name;
 	private int age;
 	private char gender;
@@ -12,7 +12,19 @@ public abstract class Customer {
 		this.gender = gender;
 	}
 	
-	public abstract void refound();
+	public abstract void buy(String productName, double price);
+	
+	@Override
+	public void add(String productName) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void add(String productName, int count) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	public String getName() {
 		return name;
@@ -45,8 +57,5 @@ public abstract class Customer {
 	public void setPriceTotal(double priceTotal) {
 		this.priceTotal = priceTotal;
 	}
-	
-	public abstract void buy(String productName, double price); 
-		
 	
 }

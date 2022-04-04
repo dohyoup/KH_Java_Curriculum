@@ -3,6 +3,7 @@ import java.util.Random;
 
 public class Main {
 
+
 	public static void main(String[] args) {
 		Random rand = new Random();
 		
@@ -17,6 +18,7 @@ public class Main {
 		empArr[3] = e4;	empArr[4] = e5;
 		
 		((DepartmentManager)e3).setTeamManager(true);
+		((DeputyGeneralManager)e4).setHeadManager(true);
 		((Director)e5).setHeadManager(true);
 		
 		for(int m = 1; m <= 30; m++) {
@@ -27,7 +29,12 @@ public class Main {
 				empArr[i].payMonth();
 				empArr[i].bonus(month);
 				
-				
+				if(empArr[i] instanceof TeamManager) {
+					((TeamManager)empArr[i]).teamPayBonus();
+				}
+				if(empArr[i] instanceof HeadManager) {
+					((HeadManager)empArr[i]).headPayBonus();
+				}
 				System.out.println("-------------------------------");
 			}
 			
