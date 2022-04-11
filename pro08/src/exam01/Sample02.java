@@ -1,5 +1,6 @@
 package exam01;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Sample02 {
@@ -21,7 +22,7 @@ public class Sample02 {
 		String input = sc.nextLine();
 		
 		String[] sArr = input.split(" "); // [10 20 30 40 50]
-		
+		System.out.println(Arrays.toString(sArr));
 		System.out.println("다음의 값을 입력하였습니다.");
 		System.out.println(String.join(", ", sArr));
 		
@@ -33,20 +34,34 @@ public class Sample02 {
 		 * 다시 입력하도록 한다.
 		 */
 		
+//		while(true) {
+//			System.out.print("전화번호 입력 : ");
+//			String input = sc.nextLine();
+//			String[] sArr = input.split("-");
+//			
+//			if(sArr.length != 3) {
+//				continue;
+//			}
+//			
+//			if(!(sArr[0].length() == 3 && sArr[1].length() == 4 && sArr[2].length() == 4)) {
+//				continue;
+//			}
+//			
+//			System.out.println("전화번호 입력을 확인하였습니다.");
+//			break;
+//		}
+		
 		while(true) {
-			System.out.print("전화번호 입력 : ");
+			System.out.println("전화번호 입력 :");
 			String input = sc.nextLine();
-			String[] sArr = input.split("-");
-			
+			String[] sArr = input.split(" ");  
 			if(sArr.length != 3) {
 				continue;
 			}
-			
 			if(!(sArr[0].length() == 3 && sArr[1].length() == 4 && sArr[2].length() == 4)) {
 				continue;
 			}
-			
-			System.out.println("전화번호 입력을 확인하였습니다.");
+			System.out.println("전화번호 입력이 확인되었습니다.");
 			break;
 		}
 	}

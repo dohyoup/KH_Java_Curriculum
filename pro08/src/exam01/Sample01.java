@@ -47,7 +47,7 @@ public class Sample01 {
 		System.out.println("s5.contains(\"Program\") ->"  + isContains);
 		
 		isContains = s5.contains("Program");
-		System.out.println("s5.contains(\"Program\") ->"  + isContains);
+		System.out.println("s5.contains(\"Program\") ->" + isContains);
 		
 		//지정한 문자열이 처음등장하는 인덱스번호 출력
 		int location;
@@ -55,18 +55,32 @@ public class Sample01 {
 		System.out.println("s5.indexOf(\"Program\") -> "  + location);
 		
 		//지정한 문자열과 원하는 문자열로 교체
-		s5 = s5.replace("Program", "프로그렘");
+		s5 = s5.replace("Program", "프로그램");
 		System.out.println("s5.replace(\"Program\", \"프로그램\") - > " + s5);
 		
 		s5 = s5.replace("Java", "자바");
 		System.out.println("s5.replace(\"Java\", \"자바\") - > " + s5);
+		
+		
+		s5 = s5.replace("Language", "언어");
+		System.out.println("s5.replace(\"Language\", \"언어\") ->" + s5);
+		
+		
 		//스플릿 : 공백을 기준으로 분리시켜주고 반환은 문자열배열로 반환시켜준다.
+//		String[] sArr;
+//		sArr = s5.split(" ");
+//		System.out.println("s5.split(\" \") - > " + Arrays.toString(sArr));
+		
 		String[] sArr;
 		sArr = s5.split(" ");
-		System.out.println("s5.split(\" \") - > " + Arrays.toString(sArr));
+		System.out.println("s5.spilt(\" \") -> " + Arrays.toString(sArr));
+		
 		
 		s5 = String.join("_", sArr); // 문자열배열을 다시 언더바기준으로 합쳐줌
 		System.out.println("String.join(\"_\", sArr) - > " + s5);
+		
+		s5 = String.join(" ", sArr);
+		System.out.println("String.join(\" \", sArr) - > " + s5);
 		
 		s5 = "    앞/뒤로 공백이 존재하는 문자열    ";
 		System.out.println(s5);
@@ -83,17 +97,21 @@ public class Sample01 {
 		System.out.println("s5.substring(7.11) -> " + s5.substring(7,11));
 		
 		s6 ="Meth";
+		System.out.println(s5.indexOf(s6));
 		System.out.println("s5.substring(7.11) -> " + s5.substring(s5.indexOf(s6), s5.indexOf(s6) + s6.length()));
 		
-		//System.out.printf)"포멧형식이 있는 문자열", 포멧형식에사용할값...) 이랑 같은것
+		//System.out.printf("포멧형식이 있는 문자열", 포멧형식에사용할값...) 이랑 같은것이지만 바로 출력하지않고 저장해두고 싶을때 사용
 		s6 = String.format("%d / %s %.1f", 10, "포멧문자열", 10.123);
 		System.out.println(s6);
 		
 		//전화번호 형식과같은것들이 있다고 가정했을때 지정한 변수가 그 형식에 메치가되는지 알아볼수 있게 도와주는 메서드/ 매치가되면 트루값이나오고 다르면 펄스가 출력된다.
 		s6 = "010-1234-5678";
 		boolean isMatch = s6.matches("\\d{3}-\\d{4}-\\d{4}");
-		System.out.println("전화번호 형식과 일치합니까? ->" + isMatch);
-
+		System.out.println("전화번호 형식과 일치합니까? -> " + isMatch);
+		
+		s6 = "02-986-5545";
+		boolean output = s6.matches("\\d{2}-\\d{3}-\\d{4}");
+		System.out.println("전화번호 형식과 일치합니까? - > " + output);
 }
 }
 //자바에서 문자열에 사용하는 \(역슬래쉬)는 어디에 사용되나? -> 이스케이프 문자에 사용.

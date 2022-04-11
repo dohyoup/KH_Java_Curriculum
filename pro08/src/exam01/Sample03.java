@@ -18,12 +18,25 @@ public class Sample03 {
 		
 		//StringBuffer sb = new StringBuffer(); 
 		
+		for(int i = 1; i <= 5; i++) {
+			System.out.println(i + "*" + i + "=" +(i*i));
+		}
+		
+		
+		
+		
 		StringBuilder sb = new StringBuilder();
 		sb.append("문자열");
 		sb.append("을 뒤에");
 		sb.append(" 추가하는");
 		sb.append(" append 메서드");
 		System.out.println(sb);
+		
+		StringBuilder st = new StringBuilder();
+		st.append("이세계");
+		st.append("아이돌");
+		st.append(" 최고다.");
+		System.out.println(st);
 		
 		sb.insert(0,  "원하는 ");
 		sb.insert(4,  "위치에 ");

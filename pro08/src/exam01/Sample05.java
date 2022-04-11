@@ -20,8 +20,8 @@ public class Sample05 {
 //		Scanner sc = new Scanner(System.in);
 //		System.out.print("정수값 입력 : ");
 //		String input = sc.nextLine();
-//		//Wrapper, StringTokenizer 활용하여 정수배열에 저장.
-//	//	String phone = input;
+//		Wrapper, StringTokenizer 활용하여 정수배열에 저장.
+//		String phone = input;
 //		
 //		StringTokenizer token = new StringTokenizer(input, " ");
 //		int iArr[] = new int[token.countTokens()];

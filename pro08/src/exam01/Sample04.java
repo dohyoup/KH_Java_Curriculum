@@ -12,14 +12,14 @@ public class Sample04 {
 		 */
 		String phone = "010-1234-5678";
 		StringTokenizer token = new StringTokenizer(phone, "-");
-		int iArr[] = new int[token.countTokens()];
-		int idx = 0;
-	//	System.out.println("토큰 수 : " + token.countTokens());
+		System.out.println("토큰 수 : " + token.countTokens());
+	//	int iArr[] = new int[token.countTokens()];
+	//	int idx = 0;
 		//spilt과 다르게 토크나이저는 배열에 따로 저장을하지않고 반복문으로 바로 문자열 나눔을 한다.
 		while(token.hasMoreTokens()) {
-			iArr[idx++] = Integer.parseInt(token.nextToken());
-		//	System.out.println(token.nextToken());
-			System.out.println(Arrays.toString(iArr));
+			System.out.println(token.nextToken());
+		//	iArr[idx++] = Integer.parseInt(token.nextToken());
+		//	System.out.println(Arrays.toString(iArr));
 		}
 	}
 

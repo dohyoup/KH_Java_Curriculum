@@ -78,23 +78,24 @@ public class Sample07 {
 		Scanner sc = new Scanner(System.in);
 		String input = "";
 		while(true) {
-			System.out.println("주민번호 앞자리만 입력 : ");
+			System.out.print("주민번호 앞자리만 입력 : ");
 			input = sc.nextLine();
 			if(input.matches("\\d{6}")) {
 				break;
 			}
 			System.out.println("주민번호 앞자리 6자만 입력하세요.");
 		}
-		
+		GregorianCalendar g = new GregorianCalendar();
 		SimpleDateFormat sFormat = new SimpleDateFormat("yyMMdd");
+		String strDate = sFormat.format(g.getTime());
 		try {
 			Date d = sFormat.parse(input);
 			System.out.println(d);
-		}catch (ParseException e) {
+		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		System.out.println(strDate);
 	}
-	
 	public void ex04() {
 		/*
 		 * 자신의 올해 생일이 며칠 남았는지 알 수 있도록 해주는 코드를 작성하시오.
@@ -138,7 +139,7 @@ public class Sample07 {
 		for(int i = 1; i <= 100000; i++) {
 			tot += i;
 		}
-		Date end = new Date();
+		Date end = new Date();//위의 반복문이 끝나고 난 후의 시간 표기
 		
 		long time = end.getTime() - start.getTime();
 		System.out.println("실행 시간 : " + time + " 밀리초");
@@ -220,6 +221,21 @@ public class Sample07 {
 		 *     1. 현재 시간보다 과거의 시간을 입력한 경우 "D-Day n일 지남" 으로 출력
 		 *     2. 현재 시간보다 미래의 시간을 입력한 경우 "D-Day n일 남음" 으로 출력
 		 */
+		SimpleDateFormat sFormat = new SimpleDateFormat("yyyy-MM-dd");
+		GregorianCalendar userInputDate = new GregorianCalendar(2021, 2 - 1, 28);
+		Date now = new Date();
+		
+		System.out.println("입력한 날짜 : " + sFormat.format(userInputDate.getTime()));
+		System.out.println("현재 날짜 : " + sFormat.format(now));
+		
+		int dDayTime = (int)((now.getTime() - userInputDate.getTime().getTime()) / 1000);
+		String t = "";
+		
+		if(dDayTime < 0) {
+			t = "남음";
+			dDayTime = -dDayTime;
+		}
+		System.out.printf("D-Day %d일 %s", dDayTime / (60 * 60 * 24), t);
 	}
 	
 	public static void main(String[] args) {
@@ -231,7 +247,7 @@ public class Sample07 {
         //  sample.ex05();
 		//  sample.ex06();
 		//  sample.ex07();
-		  sample.ex08();
+		//  sample.ex08();
 		//  sample.ex09();
 	}
 }
