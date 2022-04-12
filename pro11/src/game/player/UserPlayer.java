@@ -17,6 +17,20 @@ public class UserPlayer implements Player {
 	private Record record = new Record();
 	private int loseCont;
 	private int cheatCnt;
+	private int[] Record;
+	
+	
+	public int[] getRecord() {
+		return Record;
+	}
+
+
+	public void setRecord(int[] record) {
+		Record = record;
+	}
+
+
+
 
 	@Override
 	public void randomCardHand() {
@@ -31,6 +45,9 @@ public class UserPlayer implements Player {
 		}
 	}
 
+	
+	
+	
 	@Override
 	public String versus(Hand h1) {
 		String res = "";
@@ -56,6 +73,12 @@ public class UserPlayer implements Player {
 		}
 		return res;
 	}
+	
+	public int[] getTotal () {
+		int[] tot = {record.getWin(), record.getLose(), record.getDraw()};
+		return tot;
+	}
+
 	
 	public String getTotalRecord() {
 		String res = String.format("총 전적 : %d 전\n", record.getRecordCount());
