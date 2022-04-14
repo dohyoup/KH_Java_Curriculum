@@ -24,34 +24,40 @@ public class Main {
 		 *     - 기본 제공하는 메서드와 클래스 외에 추가로 만들 기능이 있으면 더 추가하여도 된다.
 		 */
 		Scanner sc = new Scanner(System.in);
-		UserPlayer uPlay = new UserPlayer();
+		String userInput = sc.nextLine();
+		UserPlayer uPlay = new UserPlayer(userInput);
 		ComPlayer cPlay = new ComPlayer();
 		Database db = new Database();
-		Hand uHand, cHand;
 		String uRes, cRes;
 		
-		int[] record = db.load();
-		uPlay.setRecord(record);
-		System.out.println(Arrays.toString(record));
+		System.out.print("이름 : ");
 		
+		
+		if(db.isExists(userInput)) {
+			System.out.println("이전 전적 기록을 찾았습니다. 현재 게임에 반영하여 진행합니다.");
+		} else {
+			System.out.println("이전 전적 기록이 없습니다. 새로운 전적 기록으로 진행합니다.");
+		}
+		
+		int[] record = db.getRecord(userInput);
+
+		uPlay.setRecord(record); 
 		
 		
 		System.out.println("가위 바위 보 게임을 진행합니다.");
 		System.out.println("가위 바위 보 중 하나를 입력하세요.");
-	    System.out.println("프로그램을 종료하려면 \"종료\" 라고 입력하세요.");
+		System.out.println("프로그램을 종료하려면 \"종료\" 라고 입력하세요.");
 		System.out.println("입력하지 않고 Enter 키를 누른 경우 랜덤으로 생성합니다.");
 		
 		while(true) {
 			System.out.print("가위/바위/보 >>> ");
-			String userInput = sc.nextLine();
-			
+			userInput = sc.nextLine();
 			
 			if(userInput.equals("종료")) {
 				System.out.println("전적 기록을 저장 합니다.");
-				db.save(uPlay.getRecord());
+				db.save(uPlay.getName(), uPlay.getRecord());
 				break;
 			}
-			
 			
 			uPlay.setHand(userInput);
 			cPlay.randomCardHand();

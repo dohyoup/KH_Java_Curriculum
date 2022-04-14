@@ -11,27 +11,17 @@ import game.record.Record;
 
 public class UserPlayer implements Player {
 	
-
+	
 	private Random rand = new Random();
+	private String name;
 	private Hand hand;
 	private Record record = new Record();
 	private int loseCont;
 	private int cheatCnt;
-	private int[] Record;
-	
-	
-	public int[] getRecord() {
-		return Record;
+
+	public UserPlayer (String name ) {
+		this.name = name;
 	}
-
-
-	public void setRecord(int[] record) {
-		Record = record;
-	}
-
-
-
-
 	@Override
 	public void randomCardHand() {
 		int r = rand.nextInt(3);
@@ -45,9 +35,14 @@ public class UserPlayer implements Player {
 		}
 	}
 
-	
-	
-	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@Override
 	public String versus(Hand h1) {
 		String res = "";
@@ -74,12 +69,6 @@ public class UserPlayer implements Player {
 		return res;
 	}
 	
-	public int[] getTotal () {
-		int[] tot = {record.getWin(), record.getLose(), record.getDraw()};
-		return tot;
-	}
-
-	
 	public String getTotalRecord() {
 		String res = String.format("총 전적 : %d 전\n", record.getRecordCount());
 		res += String.format("%d 승 %d 패 %d 무\n", record.getWin(), record.getLose(), record.getDraw());
@@ -105,6 +94,14 @@ public class UserPlayer implements Player {
 	
 	public int getCheatCnt() {
 		return cheatCnt;
+	}
+
+	public void setRecord(int[] record) {
+		this.record.setRecord(record);
+	}
+
+	public int[] getRecord() {
+		return this.record.getScore();
 	}
 
 }

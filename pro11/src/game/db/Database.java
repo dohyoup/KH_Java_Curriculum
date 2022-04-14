@@ -13,19 +13,61 @@ import game.player.UserPlayer;
 import game.record.Record;
 
 public class Database {
-	UserPlayer tot = new UserPlayer();
+
 	private File file;
+	private String[] rowData;   
+	
 	
 	public Database() {
 		this.file = new File("C:/Users/dohyoup/data_write");
+		this._load();
 	}
 	
 	public Database(File file) {
 		this.file = file;
 	}
 	
-	public int[] load() {
-		// 파일을 읽고 배열로 반환
+	public boolean isExists(String name) {
+		return _findIndex(name) == -1 ? false : true;
+	}
+	
+	public int[] getRecord(String name) {
+		int[] res = new int[3];
+		int idx = _findIndex(name);
+
+		if(idx == -1) {
+			return res;
+		}
+		String[] temp = rowData[idx].split(" ");
+		for(int i = 0; i < res.length; i++) {
+			res[i] = Integer.parseInt(temp[i + 1]);
+		}
+		
+		return res;
+	}
+	
+	private int _findIndex(String name) {
+		for(int i = 0; i < rowData.length; i++) {
+			if(rowData[i].contains(name)) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	//파일로 불러온 모든데이터가 row(줄)단위로 배열에 저장되어있고
+	private void _rowParser(String data) {
+		StringTokenizer st = new StringTokenizer(new String(data), "\r\n");
+		rowData = new String[st.countTokens()];
+		int i = 0;
+		
+		while(st.hasMoreTokens()) {
+			rowData[i++] = st.nextToken();
+		}
+	}
+	
+	private void _load() {
+		//오로지 파일에있는 내용을 불러오기위한 메소드
 		try (FileReader fr = new FileReader(file)) {
 			char[] buff = new char[16];
 			char[] data = new char[0];
@@ -40,29 +82,48 @@ public class Database {
 				data = Arrays.copyOf(data, data.length + rSize);
 				System.arraycopy(buff, 0, data, data.length - rSize, rSize);
 			}
-				StringTokenizer st = new StringTokenizer(new String(data), " ");
-				int[] iArr2 = new int[st.countTokens()];
-				int i = 0;
-				
-			while(st.hasMoreTokens()) {
-				iArr2[i++] = Integer.parseInt(st.nextToken());
-			}
 			
-			System.out.println(Arrays.toString(iArr2));
+			_rowParser(new String(data));
 			
-          				
-			} catch (FileNotFoundException e) {
-				System.out.println("해당 파일이 존재하지 않습니다.");
-				e.printStackTrace();
-			} catch (IOException e) {
-				System.out.println("파일 쓰기 작업중 문제가 발생하였습니다.");
-				e.printStackTrace();
-			}
-		return null;
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("해당 파일이 존재하지 않습니다.");
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("파일 쓰기 작업중 문제가 발생하였습니다.");
+			e.printStackTrace();
+		}
 	}
 	
+
 	
-	public void save(int[] record) {
+	public void save(String name, int[] record) {
 		// 정수 배열을 파일로 저장
+		String[] sArr = new String[record.length];
+		
+		for(int i = 0; i < record.length; i++) {
+			sArr[i] = Integer.valueOf(record[i]).toString();
+		}//점수가 문자열로 저장
+		
+		int idx = _findIndex(name);
+		if(idx == -1) {
+			rowData = Arrays.copyOf(rowData, rowData.length + 1);
+			rowData[rowData.length - 1] = name + " " + String.join(" ", sArr);
+		}else {
+			rowData[idx] = name + " " + String.join(" ", sArr);
+		}
+		
+		try (FileWriter fw = new FileWriter(file)) {
+			for(int i = 0; i < rowData.length; i++) {
+				fw.write(rowData[i] + "\r\n");
+			}
+			fw.flush();
+		} catch (FileNotFoundException e) {
+			System.out.println("해당 파일이 존재하지 않습니다.");
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("파일 쓰기 작업중 문제가 발생하였습니다.");
+			e.printStackTrace();
+		}
 	}
 }
