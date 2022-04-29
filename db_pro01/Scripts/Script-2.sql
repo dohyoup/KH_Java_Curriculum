@@ -5,7 +5,7 @@ SELECT FIRST_NAME
 SELECT LENGTH('Hello') AS Col1
 	 , LENGTH('안녕') AS Col2
 	 , LENGTHB('Hello') AS Col3
-	 , LENGTHB('안녕') AS Col4
+	 , LENGTHB('안녕') AS Col4 -- 바이트수  
 	FROM DUAL; --더미테이블이 저장될 수 있는 거 = 임시 테이블정도
 	
 	
@@ -24,7 +24,7 @@ SELECT INSTR('sample@example.com', '@') AS Col1
  	  , RTRIM('    smaple@example.com    ', '    ') Col2
  	  , TRIM('    smaple@example.com    ') AS Col3
  	  , TRIM(LEADING '-' FROM '----saple@example.com----') AS Col4
- 	  , TRIM(TRAILING '-' FROM '----saple@example.com----') AS Col5
+ 	  , TRIM(TRAILING '-' FROM '----saple@example.com----') AS Col5 
  	  , TRIM(BOTH '-' FROM '----saple@example.com----') AS Col6
  	  FROM DUAL;
  	 
@@ -50,7 +50,7 @@ SELECT INSTR('sample@example.com', '@') AS Col1
  	
  SELECT LOWER('smaple@example.com') AS Col1 -- 다소문자
       , UPPER('smaple@example.com') AS Col2 -- 다대문자
-      , INITCAP('smaple@example.com') AS Col3 -- 시작 이니셜만 대문자
+      , INITCAP('smaple@example.com') AS Col3 -- 단어의 첫번째 이니셜만 대문자
    FROM DUAL;
   
   --합치는거
@@ -77,7 +77,7 @@ SELECT INSTR('sample@example.com', '@') AS Col1
  SELECT ROUND(10.4) AS Col1
       , ROUND(10.5) AS Col2
       , ROUND(10.45) AS Col3
-      , ROUND(10.45, 2) AS Col4
+      , ROUND(10.45, -1) AS Col4
       , ROUND(10.456, 2) AS Col5
       , ROUND(18.5, -1) AS Col6 -- -1정수 첫째자리까지 표기해라
   FROM DUAL;
@@ -96,11 +96,12 @@ SELECT INSTR('sample@example.com', '@') AS Col1
    FROM DUAL;   
   
  SELECT SYSDATE AS Col1
- 	  , ADD_MONTHS(SYSDATE, 2) AS Col2 -- 현재 날짜에 2개월을 더해라
+ 	  ,  _MONTHS(SYSDATE, 2) AS Col2 -- 현재 날짜에 2개월을 더해라
  	  , ADD_MONTHS(SYSDATE, -2) AS Col3 -- 현재 날짜에 2개월을 빼라
  	  , LAST_DAY(SYSDATE) AS Col4 -- 현재달의 마지막 날짜 출력 
  	  , NEXT_DAY(SYSDATE, 6) AS Col5 -- 현재날짜를 기준으로 1: 일요일 2: 월요일 ... 6: 금요일, 7 : 토요일
- 	  , NEXT_DAY(SYSDATE, '금') AS Col6 
+ 	  , NEXT_DAY(SYSDATE, '금') AS Col6
+ 	  , NEXT_DAY(SYSDATE, 5) AS Col7
 	FROM DUAL; 
 
  SELECT MONTHS_BETWEEN(SYSDATE, ADD_MONTHS(SYSDATE, 2)) AS Col1 -- 현재 날짜에서 오른쪽 날짜를 빼라
@@ -113,6 +114,7 @@ SELECT INSTR('sample@example.com', '@') AS Col1
       , EXTRACT(HOUR FROM SYSTIMESTAMP) AS Col4 -- 지금 몇시냐
       , EXTRACT(MINUTE FROM SYSTIMESTAMP) AS Col5 -- 지금 몇분이냐
       , EXTRACT(SECOND FROM SYSTIMESTAMP) AS Col6 -- 지금 몇초냐
+      , EXTRACT(YEAR FROM SYSDATE) AS Col7
    FROM DUAL;
   
   
@@ -158,7 +160,7 @@ SELECT INSTR('sample@example.com', '@') AS Col1
 SELECT TO_NUMBER('12345')
      , TO_NUMBER('123.45')
      , TO_NUMBER('123,456', '999,999')
-     , TO_NUMBER('FF', 'XX') -- 16진수
+     , TO_NUMBER('FF', 'XX') -- 16진수이니깐 10진수 형태로 바꾸어라
   FROM DUAL;   
  
  

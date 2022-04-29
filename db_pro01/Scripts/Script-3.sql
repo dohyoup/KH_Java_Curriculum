@@ -18,11 +18,18 @@ SELECT FIRST_NAME || ' ' || LAST_NAME AS NAME
 	 FROM EMPLOYEES;   
 
 -- EMPLOYEES 테이블에서 전화번호가 011 로 시작하는 직원의 성+이름과 사원번호, 전화번호를 조회한다.
+SELECT FIRST_NAME || ' ' || LAST_NAME AS 이름
+     , EMPLOYEE_ID AS 사원번호
+     , PHONE_NUMBER AS 전화번호
+  FROM EMPLOYEES 
+  WHERE PHONE_NUMBER LIKE '011%';
+	
 SELECT FIRST_NAME || ' ' || LAST_NAME AS NAME
      , EMPLOYEE_ID 
      , PHONE_NUMBER 
 	FROM EMPLOYEES 
 	WHERE PHONE_NUMBER LIKE '011%';
+
 -- EMPLOYEES 테이블에서 커미션이 존재하는 직원의 이름과 급여, 연봉을 조회한다.
 --     - 연봉에는 커미션이 계산된 연봉으로 조회한다.
 SELECT CONCAT(FIRST_NAME, ' ' || LAST_NAME) AS NAME

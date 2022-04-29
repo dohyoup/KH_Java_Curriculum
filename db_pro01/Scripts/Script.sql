@@ -22,10 +22,10 @@ WHERE EMPLOYEE_ID >= 200
    OR FIRST_NAME = 'Steven'; -- 문자열 리터럴은 작은 따옴표
   
   
- SELECT EMPLOYEE_ID AS "사번" --컬럼명으로 알 수 없을 때 내가 따로 별칭을 부여
+ SELECT EMPLOYEE_ID AS 사번 --컬럼명으로 알 수 없을 때 내가 따로 별칭을 부여
  	 , FIRST_NAME AS 이름
  	 , LAST_NAME 성
- 	 , EMAIL "이메일 주소" -- 별칭도 띄어쓰기가 들어가면 안된다. 띄어쓸거면 ""로 묶으면 된다.
+ 	 , EMAIL AS "이메일 주소" -- 별칭도 띄어쓰기가 들어가면 안된다. 띄어쓸거면 ""로 묶으면 된다.
  	FROM EMPLOYEES;
  
  SELECT EMPLOYEE_ID AS "사번"--3 프롬절 웨얼절 셀렉트절 순으로 해석된다.
@@ -35,9 +35,10 @@ WHERE EMPLOYEE_ID >= 200
   WHERE EMPLOYEE_ID >= 200; --2  
   
   
-  SELECT FIRST_NAME || ' ' || LAST_NAME AS "이름" -- ||는 문자열을 결합할 때 사용
-  		,SALARY * 12 AS "연봉"
+  SELECT FIRST_NAME || ' ' || LAST_NAME 이름 -- ||는 문자열을 결합할 때 사용
+  		,SALARY * 12 AS 연봉
 	FROM EMPLOYEES;  
+
 
 --  조건절에서 사용하는 연산자
 -- AND, OR, NOT, IN, NOT IN, BETWEEN ... AND 
@@ -85,11 +86,11 @@ SELECT *
  
  SELECT *
   FROM EMPLOYEES 
- WHERE JOB_ID  LIKE '%#____' ESCAPE '#'; --앞의 글자는 뭐가와도 상관이없고 %_*** 이런 형식의 데이터를 불러오고 싶은것
+ WHERE JOB_ID  LIKE '%\____' ESCAPE '\'; --앞의 글자는 뭐가와도 상관이없고 %_*** 이런 형식의 데이터를 불러오고 싶은것
  
   SELECT *
   FROM EMPLOYEES 
- WHERE JOB_ID NOT LIKE '%#____' ESCAPE '#';
+ WHERE JOB_ID NOT LIKE '%$____' ESCAPE '$';
 
 SELECT *
   FORM EMPLOYEES
@@ -110,8 +111,10 @@ SELECT *
  WHERE NOT (EMPLOYEE_ID >= 200
  		OR EMPLOYEE_ID = 100);	
 -- 부서 테이블
-SELECT * FROM DEPARTMENTS;
-
+SELECT * 
+FROM DEPARTMENTS
+WHERE NOT (DEPARTMENT_ID  >= 200
+		OR DEPARTMENT_ID  = 100);
 -- 직급 테이블
 SELECT * FROM JOBS;
 
