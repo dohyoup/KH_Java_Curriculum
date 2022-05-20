@@ -1,5 +1,6 @@
 CREATE TABLE my_exercise (
-		EVENT_NAME          VARCHAR2(20)  PRIMARY KEY  
+		idx                 NUMBER     PRIMARY KEY
+	  ,	EVENT_NAME          VARCHAR2(20)  NOT NULL  
 	  , SETS_NUMBER			NUMBER   	  NOT NULL  
 	  , E_NUMBER			NUMBER   	  NOT NULL 
 	  , P_TIME				VARCHAR2(10)
@@ -9,6 +10,12 @@ CREATE TABLE my_exercise (
 
 SELECT * FROM my_exercise;
 
-DROP TABLE my_exercise;
-DELETE FROM my_exercise;
 COMMIT;
+CREATE SEQUENCE SEQ_my_exercise
+		  START WITH     1
+		    MAXVALUE  9999
+	    INCREMENT BY     1
+	           CYCLE
+	        NOCACHE;
+	    
+DROP SEQUENCE SEQ_my_exercise;
