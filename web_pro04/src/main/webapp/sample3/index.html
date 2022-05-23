@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>네이버 : 회원가입</title>
+</head>
+	<body>
+		<h1>NAVER</h1>
+		<form action="" method="POST">
+		 	<div>
+				<b><label>아이디</label></b><br>
+				<input type="text" name="v1" size="35" required >
+			</div>
+			<div>
+				<b><label>비밀번호</label></b><br>
+				<input type="password" name="v2" size="35"  required >
+			</div>
+			<div>
+				<b><label>비밀번호 재확인</label></b><br>
+				<input type="password" name="v3" size="35" required ><br>
+			</div>
+			<br>
+			<div>
+				<b><label>이름</label></b><br>
+				<input type="text" name="v4" size="35" required><br>
+			</div>
+			<div>	
+				<b><label>생년월일</label></b><br>
+				<input type="number" name="v5" min="1990" max="2022" placeholder="년(4자)" required>
+				<select name="month" style="width: 120px;" required>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+				</select>
+				<input type="number" name="day"  min="1" max="31" placeholder="일" required>
+			</div>
+			<div>
+			<b><label>성별</label></b><br>
+			<select name="v6" style="width: 281px;" required>
+				<option selected>성별</option>
+				<option value="opt2">남자</option>
+				<option value="opt3">여자</option>
+				<option value="opt4">선택안함</option>
+			</select>
+			<br>
+			</div>
+			<div>
+			<label><b>본인 확인 이메일</b><small>(선택)</small></label><br>
+			<input type="email" name="v7" size="35" placeholder="선택입력"><br>
+			<br>
+			</div>
+			<div>
+			<b><label>휴대전화</label></b><br>
+			<select name="v8" style="width: 280px;" required>
+				<option value="opt1" selected>대한민국 +82</option>
+				<option value="opt2">니카라과 +505</option>
+				<option value="opt3">네팔 +977</option>
+				<option value="opt4">미얀마 +95</option>
+			</select><br>
+			<input type="tel" name="phone_number" placeholder="전화번호 입력">
+			<button type="button">인증번호 받기</button><br>
+			<input type="text" name="valid_number" size="35" placeholder="인증번호 입력하세요" disabled><br>
+			
+			<button type="button" style="width: 280px;">가입하기</button><br>
+			</div>
+		</form>
+	</body>	
+</html>

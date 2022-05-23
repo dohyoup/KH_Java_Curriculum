@@ -96,16 +96,20 @@ SELECT INSTR('sample@example.com', '@') AS Col1
    FROM DUAL;   
   
  SELECT SYSDATE AS Col1
- 	  ,  _MONTHS(SYSDATE, 2) AS Col2 -- 현재 날짜에 2개월을 더해라
+ 	  , ADD_MONTHS(SYSDATE, 2) AS Col2 -- 현재 날짜에 2개월을 더해라
  	  , ADD_MONTHS(SYSDATE, -2) AS Col3 -- 현재 날짜에 2개월을 빼라
  	  , LAST_DAY(SYSDATE) AS Col4 -- 현재달의 마지막 날짜 출력 
- 	  , NEXT_DAY(SYSDATE, 6) AS Col5 -- 현재날짜를 기준으로 1: 일요일 2: 월요일 ... 6: 금요일, 7 : 토요일
- 	  , NEXT_DAY(SYSDATE, '금') AS Col6
+ 	  , NEXT_DAY(SYSDATE, 5) AS Col5 -- 현재날짜를 기준으로 1: 일요일 2: 월요일 ... 6: 금요일, 7 : 토요일
+ 	  , NEXT_DAY(SYSDATE, '목') AS Col6
  	  , NEXT_DAY(SYSDATE, 5) AS Col7
+ 	  , ADD_MONTHS(SYSDATE, 5) AS Col8
+ 	  , LAST_DAY(SYSDATE)
 	FROM DUAL; 
 
+
  SELECT MONTHS_BETWEEN(SYSDATE, ADD_MONTHS(SYSDATE, 2)) AS Col1 -- 현재 날짜에서 오른쪽 날짜를 빼라
-      , MONTHS_BETWEEN(ADD_MONTHS(SYSDATE, 2), SYSDATE) AS Col2 -- 이 함수는 몇개월 차이인지만 보여줄 수 있다.
+      , MONTHS_BETWEEN(ADD_MONTHS(SYSDATE, 2), SYSDATE) AS Col2
+      , MONTHS_BETWEEN(SYSDATE, ADD_MONTHS(SYSDATE , -4)) AS DD-- 이 함수는 몇개월 차이인지만 보여줄 수 있다.
    FROM DUAL;   
    
  SELECT EXTRACT(YEAR FROM SYSDATE) AS Col1 -- 지금 몇년도이냐
@@ -114,7 +118,6 @@ SELECT INSTR('sample@example.com', '@') AS Col1
       , EXTRACT(HOUR FROM SYSTIMESTAMP) AS Col4 -- 지금 몇시냐
       , EXTRACT(MINUTE FROM SYSTIMESTAMP) AS Col5 -- 지금 몇분이냐
       , EXTRACT(SECOND FROM SYSTIMESTAMP) AS Col6 -- 지금 몇초냐
-      , EXTRACT(YEAR FROM SYSDATE) AS Col7
    FROM DUAL;
   
   
@@ -158,7 +161,7 @@ SELECT INSTR('sample@example.com', '@') AS Col1
 
 	--넘버는 문자열만 입력값으로 받는다.
 SELECT TO_NUMBER('12345')
-     , TO_NUMBER('123.45')
+     , TO_NUMBER('123.456')
      , TO_NUMBER('123,456', '999,999')
      , TO_NUMBER('FF', 'XX') -- 16진수이니깐 10진수 형태로 바꾸어라
   FROM DUAL;   
