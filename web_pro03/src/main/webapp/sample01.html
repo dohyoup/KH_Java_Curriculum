@@ -7,27 +7,41 @@
 </head>
 <body>
 	<h1>Date and time formats used in HTML</h1>
-	<p>Certain HTML elements use date and/or time values. The formats of the strings that specify these values are described in this article.</p>
-	<p>Elements that use such formats include certain forms of the <a href="#" style="background-color: #EFEFEF;">&lt;input&gt;</a> element that let the user choose or specify a date, time, or both, as well as the <a href="#" style="background-color: #EFEFEF;">&lt;ins&gt;</a> and <a href="#" style="background-color: #EFEFEF;">&lt;del&gt;</a> elements, whose <a href="#" style="background-color: #EFEFEF;">datetime</a> attribute specifies the date or date and time at which the insertion or deletion of content occurred.</p>
-	<p>For <span style="background-color: #EFEFEF;">&lt;input&gt;</span>, the values of <a href="#" style="background-color: #EFEFEF;">type</a> that return a <a href="#" style="background-color: #EFEFEF;">value</a> which contains a string representing a date and/or time are:</p>
+	<p>Certain HTML elements use date and/or time values. The formats of the strings that specify these</p>
+	<p>values are described in this article</p>
+	<br>
+	<br>
+	<p>Elements that use such formats include certain forms of the <a href="#" style="background-color:#EFEFEF;">&lt;input&gt;</a> element that let the user</p>	
+	<p>choose or specify a date, time, or both, as well as the<a href="#" style="background-color:#EFEFEF;">&lt;ins&gt;</a> and <a href="#" style="background-color: #EFEFEF;">&lt;del&gt;</a> elements, whose <a href="#" style="background-color: #EFEFEF;">datetime</a></p>	
+	<p>attribute specifies the date or date and time at which the insertion or deletion of content occurred.</p>	
+	<br>
+	<br>
+	<p>For <span style="background-color:#EFEFEF;">&lt;input&gt;</span>, the values of <a href="#" style="background-color: #EFEFEF;">type</a> that return a <a href="#" style="background-color: #EFEFEF;">value</a> which contains a string representing a date</p>
+	<p>and/or time are:</p>
+	<br>
+	<br>
 	<ul>
-		<li><a href="#" style="background-color: #EFEFEF;">date</a></li>
-		<li><a href="#" style="background-color: #EFEFEF;">datetime-local</a></li>
-		<li><a href="#" style="background-color: #EFEFEF;">month</a></li>
-		<li><a href="#" style="background-color: #EFEFEF;">time</a></li>
-		<li><a href="#" style="background-color: #EFEFEF;">week</a></li>
+		<li><a href ="#" style="background-color: #EFEFEF">date</a></li><br>
+		<li><a href ="#" style="background-color: #EFEFEF">datetime-local</a></li><br>
+		<li><a href ="#" style="background-color: #EFEFEF">month</a></li><br>
+		<li><a href ="#" style="background-color: #EFEFEF">time</a></li><br>
+		<li><a href ="#" style="background-color: #EFEFEF">week</a></li><br>
 	</ul>
+	<br>
 	<h2>Examples</h2>
-	<p>Before getting into the intricacies of how date and time strings are written and parsed in HTML, here are some examples that should give you a good idea what the more commonly-used date and time string formats look like.</p>
+	<p>Before getting into the intricacies of how date and time strings are written and parsed in HTML, here</p>
+	<p>are some examples that should give you a good idea what the more commonly-used date and time</p>
+	<p>string formats look like.</p><br>
+	<br>
 	<table border="1" style="border-collapse: collapse;">
-		<caption><b>Example HTML date and time strings</b></caption>
+	<caption><b>Example HTML date and time strings</b></caption>
 		<tr>
-			<th>String</th>
-			<th colspan="2">Date and/or time</th>
+			<td><b>String</b></td>
+			<th colspan ="2">Date and/or time</th>
 		</tr>
 		<tr>
-			<td>2005-06-07</td>
-			<td>June 7, 2005</td>
+			<td> 2005-5-07</td>
+			<td> JUNE 7,2005</td>
 			<td><a href="#">[details]</a></td>
 		</tr>
 		<tr>
@@ -61,11 +75,7 @@
 			<td><a href="#">[details]</a></td>
 		</tr>
 	</table>
-	<h2>Basics</h2>
-	<p>Before looking at the various formats of date and time related strings used by HTML elements, it is helpful to understand a few fundamental facts about the way they're defined. HTML uses a variation of the ISO 8601 standard for its date and time strings. It's worth reviewing the descriptions of the formats you're using in order to ensure that your strings are in fact compatible with HTML, as the HTML specification includes algorithms for parsing these strings that is actually more precise than ISO 8601, so there can be subtle differences in how date and time strings are expected to look.</p>
-	<h3>Character set</h3>
-	<p>Dates and times in HTML are always strings which use the ASCII character set.</p>
-	<h3>Year numbers</h3>
-	<p>In order to simplify the basic format used for date strings in HTML, the specification requires that all years be given using the modern (or proleptic) Gregorian calendar. While user interfaces may allow entry of dates using other calendars, the underlying value always uses the Gregorian calendar.</p>
+	
+	
 </body>
 </html>

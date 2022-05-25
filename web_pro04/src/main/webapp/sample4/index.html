@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>옥션 회원가입</title>
+</head>
+<body>
+<h1>옥션 회원가입</h1>
+<h2>1 정보입력</h2> 
+<form action="" method="POST">
+<div>
+	<input type="text" name="name" size = "57"  placeholder="이름" required><br>
+</div>
+<br>
+<div>
+	<input type="text" name= "id" size="57" placeholder="아이디" required><br>
+</div>
+<br>
+<div>
+	<input type="password" name= "password" size="57" placeholder="비밀번호" required><a href="#"><small>비밀번호 도움말</small></a><br>
+</div>
+<br>
+<div>
+	<input type="password" name= "password" size="57" placeholder="비밀번호 재입력" required><br>
+</div>
+<br>
+<div>
+<select name="phonenumber" style="width: 131px;" required>
+	<option value="0">휴대폰 번호 선택</option>
+	<option value="010">010</option>
+	<option value="011">011</option>
+	<option value="016">016</option>
+	<option value="017">017</option>
+	<option value="018">018</option>
+	<option value="019">019</option>
+	<option value="0130">0130</option>
+</select>
+-
+<input name="number" size="14" min="4" max="4" required>
+-
+<input name="number" size="14" min="4" max="4" required>
+</div>
+<br>
+<div>
+<input name="email" size="14" placeholder="이메일" required>
+@
+<select name="email" style="width: 131px;" required>
+	<option value="0">선택</option>
+	<option value="naver.com">naver.com</option>
+	<option value="hanmail.net">hanmail.net</option>
+	<option value="gmail.com">gmail.com</option>
+	<option value="daum.net">daum.net</option>
+</select>
+</div>
+<br>
+<hr>
+<h2>2 약관동의</h2>
+	<input id="id_chk1" type="checkbox" name ="chk1" value="a"> <label for="id_chk1">옥션 이용약관</label><br>
+	<input id="id_chk2" type="checkbox" name ="chk1" value="b"> <label for="id_chk2">전자금융거래 이용약관</label><br>
+	<input id="id_chk3" type="checkbox" name ="chk1" value="c"> <label for="id_chk3">개인정보 수집 및 이용</label><br>
+	<input id="id_chk3" type="checkbox" name ="chk1" value="d"> <label for="id_chk4">개인정보 제3자(판매자)제공</label><br>
+	<input id="id_chk3" type="checkbox" name ="chk1" value="e"> <label for="id_chk5">개인정보 수집 및 이용</label><br>
+	<input id="id_chk3" type="checkbox" name ="chk1" value="f"> <label for="id_chk6">위치정보 이용약관</label><br>
+	<input id="id_chk3" type="checkbox" name ="chk1" value="g"> <label for="id_chk7">혜택 알림 이메일, 문자, 앱 푸시 수신</label><br>
+</form>
+<br>
+<hr>
+<ul>
+	<li>가입은 14세 이상 고객만 가능합니다.</li>
+	<li>7세 이상 14세 미만 회원은 회원가입 후 모바일에서 본인인증, 법정대리인 인증을 진행하면 서비스를 이용하실 수 있습니다.</li>
+	<li>고객은 동의를 거부할 권리가 있으며 동의를 거부할 경우, 사이트 가입 또는 일부 서비스 이용이 제한됩니다.</li>
+</ul>
+<div>
+<button type="submit" style="width: 131px;" >회원가입</button>
+<button type="submit" style="width: 131px;">취소</button>
+</div>
+</body>
+</html>
