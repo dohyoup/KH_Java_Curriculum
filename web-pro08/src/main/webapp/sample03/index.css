@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	width: 730px;
+	margin: 0 auto;
+	margin-top: 40px;
+}
+
+
+
+
+.m-1{
+	padding: 0 26px;
+	font-size: 15px;
+}
+.m-2 {
+	padding: 0 26px;
+	font-size: 15px;
+	position: relative;
+	top: -130px;
+}
+.m-3 {
+	padding: 0 4px 0 16px;
+	font-size: 15px;
+}
+.title {
+	width: 300px;
+	height: 25px;
+	margin-bottom: 7px;
+}
+.content {
+	width: 300px;
+	height: 240px;
+	margin-bottom: 7px;
+}
+.btn {
+	margin: 0 0 20px 120px;
+	width: 77px;
+	height: 25px;
+}
+.btn-2 {
+	height: 31px;
+	width:65px;
+}
+
+
+
+
+table {
+	border: 1px solid black;
+}
+table th, td {
+	border: 1px solid black;
+	height: 33px;
+}
+
+
+
+
+thead {
+	color: white;
+}
+.container th {
+	background-color: rgb(255, 161, 123);
+	height: 50px;
+}
+tbody{
+	background-color: rgb(255, 253, 229);
+}
+tfoot {
+	background-color: rgb(255, 161, 123);
+	color: white;
+}
+
+
+
+
+.num {
+	width: 5%;
+}
+.tit {
+	width: 46.5%;
+}
+.writer {
+	width: 16%;
+}
+.days {
+	width: 16%;
+}
+.view {
+	width: 7%;
+}
+

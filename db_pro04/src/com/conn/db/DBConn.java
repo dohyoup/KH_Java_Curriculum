@@ -29,8 +29,10 @@ public class DBConn {
 	public DBConn(File config) throws Exception{
 		
 			Map<String, String> map = new HashMap<String, String>();
+			
 			BufferedReader br = new BufferedReader(new FileReader(config));
-			StringBuilder sb = new StringBuilder();
+			
+	//		StringBuilder sb = new StringBuilder();
 			
 				while(br.ready()) {
 					String[] kv = br.readLine().split("=");
@@ -42,7 +44,7 @@ public class DBConn {
 				} else if(map.get("tns_alias") != null) {
 					url_address = String.format("%s?TNS_ADMIN=%s", map.get("tns_alias"), map.get("wallet_path"));
 				} else {
-					System.out.println(config.getName() + "파일의 데이터베이스 연결 구성 정보가 잘목되었습니다.");
+					System.out.println(config.getName() + "파일의 데이터베이스 연결 구성 정보가 잘못되었습니다.");
 				}
 				
 				this.createConnection(map.get("username"), map.get("password"));

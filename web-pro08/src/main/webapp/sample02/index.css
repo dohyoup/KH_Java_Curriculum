@@ -1,0 +1,143 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	/*box-sizing: border-box;*/
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+header {
+	text-align: right;
+	width: 900px;
+	margin: 0 auto;
+	padding: 13px 0;
+	border-bottom: 2px solid 
+}
+section {
+	width: 900px;
+	margin: 0 auto;
+	padding: 10px 0;
+	background-color : rgb(255, 254, 255);
+}
+
+footer {
+	width: 900px;
+	margin: 0 auto;
+	padding: 50px 0px 25px 0px;
+	border-bottom: 2px solid rgb(218, 218, 218);
+	background-color : rgb(255, 254, 255);
+	text-align: center;
+}
+
+.nav {
+	width: 100%;
+}
+
+.number, .writer, .days, .view, .like {
+	text-align: center;
+}
+
+.writer {
+	text-align: left;
+}
+
+.board-list-wrap {
+	text-align: center;
+	border-bottom: 2px solid rgb(218, 218, 218);
+}
+
+.board-list-wrap,
+.item  {
+	font-size: 0;
+}
+
+.board-list-wrap > div {
+	font-weight: 700;
+}
+
+
+.board-list-wrap > div,
+.item > div{
+	display: inline-block;
+	font-size: 14px;
+	padding: 20px 0;
+}
+.item > div {
+	border-bottom: 2px solid rgb(218, 218, 218);
+}
+
+.container .number {
+	width: 10%
+}
+.container .tit {
+	width: 55%
+}
+.container .writer {
+	width: 13%
+}
+.container .days {
+	width: 10%
+}
+.container .view {
+	width: 7%
+}
+.container .like {
+	width: 5%
+}
+.form-inline-input {
+	width: 900px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.mb-1 {
+	padding-top: 20px;
+}
+
+/*
+input[type=checkbox] {
+	display: none;
+}
+*/
+
+input.check-hidden {
+	display: none;
+}
+.material-icons {
+	position: relative;
+	top: 7px;
+}
+
+input.check-hidden + .checkbox {
+	position: relative;
+	bottom: 1px;
+	display: inline-block;
+	width: 1rem; height: 1rem;
+	border: 1px solid black;
+	vertical-align: middle;
+}
+.paging {
+	word-spacing: 15px;
+}
+
+.mb-2 {
+	display: inline-block;
+}
+
+input.check-hidden + .checkbox > span {
+	display: none;
+	font-size: 14px;	
+	}
+
+input.check-hidden:checked + .checkbox > span {
+	position: relative;
+	top: -4px;
+	display: inline-block;
+}
+
+

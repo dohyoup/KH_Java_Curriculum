@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>포트폴리오 문제</title>
+	<link rel="stylesheet" type="text/css" href="./index.css">
+</head>
+	<body>
+		<form action="insert.no" method="POST">
+		<fieldset>
+			<legend> 공지사항 작성하기</legend>
+			<label class="m-1"><b>제목</b></label><input type="text" class="title" name="title"  placeholder="제목을 입력하시오" required><br>		
+			<label class="m-2"><b>내용</b></label><textarea cols="50" rows="10" class="content" name="content" placeholder="내용을 입력하시오" required></textarea><br>		
+			<label class="m-3"><b>첨부파일</b></label><input type="file"  name="uploadFile" ><br>
+			<br>
+			<button class="btn" type="button" >작성하기</button>		
+		</fieldset>			
+		</form>
+			<br>
+			<hr>
+			<br>
+		<table>
+			<thead  class="container">
+				<tr>
+				  <th class="num">번호</th>
+				  <th class="tit" colspan="2">제목</th>
+				  <th class="writer">작성자</th>
+				  <th class="days">작성일</th>
+				  <th class="view">조회수</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+				  <td class="num">9</td>
+				  <td class="tit">공지사항 제목 9</td>
+				  <td class="link"><button class="btn-2" type="button" >바로가기</button></td>
+				  <td class="writer">user01</td>
+				  <td class="days">2021-03-29</td>
+				  <td class="view">34</td>
+				</tr>
+				<tr>
+				  <td class="num">6</td>
+				  <td class="tit">공지사항 제목 6</td>
+				  <td class="link"><button class="btn-2" type="button" >바로가기</button></td>
+				  <td class="writer">answ445 </td>
+				  <td class="days">2021-03-12</td>
+				  <td class="view">67</td>
+				</tr>
+				<tr>
+				  <td class="num">3</td>
+				  <td class="tit">공지사항 제목 3</td>
+				  <td class="link"><button class="btn-2" type="button" >바로가기</button></td>
+				  <td class="writer">testg12</td>
+				  <td class="days">2021-03-01</td>
+				  <td class="view">98</td>
+				</tr>
+				<tr>
+				  <td class="num">2</td>
+				  <td class="tit">공지사항 제목 2</td>
+				  <td class="link"><button class="btn-2" type="button" >바로가기</button></td>
+				  <td class="writer">palwe3</td>
+				  <td class="days">2021-01-02</td>
+				  <td class="view">85</td>
+				</tr>
+				<tr>
+				  <td class="num">1</td>
+				  <td class="tit">공지사항 제목 1</td>
+				  <td class="link"><button class="btn-2" type="button" >바로가기</button></td>
+				  <td class="writer">xml23</td>
+				  <td class="days">2020-12-24</td>
+				  <td class="view">124</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+				  <th colspan="4">전체공지사항 갯수</th>
+				  <th colspan="2">5개</th>
+				</tr>
+			</tfoot>
+		</table>
+	</body>
+</html>
