@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: rgb(223 233 247);
+}
+
+
+input {
+	width: 230px;
+	border: none;
+	border-bottom: 2px dashed;
+	border-color: gray;
+	outline: none;
+	background-color: rgb(237 236 237);
+}
+
+.account {
+	width: 380px;
+	margin: 8rem auto;
+	height: 465px;
+	background-color: rgb(237 236 237);
+	border: solid rgb(219 226 235);
+}
+
+span {
+	font-size : 10px;
+	padding: 0 0 0 120px;
+}
+
+
+
+
+.dv1 {
+	padding: 60px 0 10px 0;
+}
+
+.dv2 {
+	padding: 0px 0 30px 0;
+}
+
+.dv3 {
+	padding: 0px 0 10px 0;
+}
+
+.dv4 {
+	padding: 0px 0 25px 0;
+}
+
+.dv5 {
+	padding: 0px 0 30px 0;
+}
+
+
+
+
+.la1 {
+	padding: 0 54px 0 10px;
+}
+
+.la2 {
+	padding: 0 38px 0 10px;
+}
+
+.la3 {
+	padding: 0 0px 0 10px;
+}
+
+.la4 {
+	padding: 0 54px 0 10px;
+}
+
+.la5 {
+	padding: 0 70px 0 10px;
+}
+
+
+
+
+.in4 {
+	width: 101.5px;
+}
+
+.in5 {
+	margin-bottom: 20px;
+}
+
+.in6{
+	margin-bottom: 20px;
+	margin-left: 119px;
+}
+
+
+
+
+.join {
+	display : block;
+	margin: auto;
+	width: 350px;
+	height: 50px;
+	background-color: rgb(199 223 181); 
+	border: none;
+	
+}
+

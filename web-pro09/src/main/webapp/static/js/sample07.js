@@ -7,8 +7,7 @@
 //window.onload = function() {
 $(document).ready(function() {
 	createOptionMonth();
-	var all_chk = document.getElementById("allchk");
-	all_chk.addEventListener("click", function(e) {
+	$(".allchk").bind("click", function(e) {
 		toggleAll(this);
 	});
 });
