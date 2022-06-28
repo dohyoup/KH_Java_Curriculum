@@ -10,8 +10,9 @@
 	<h1>Welcome JSP/Servlet</h1>
 	<ul>
 		<li><a href="./jsp/script_tag">JSP - Script Tag</a></li>
-		<li>목록 2</li>
-		<li>목록 3</li>
+		<li><a href="./jsp/request">JSP - request</a></li>
+		<li><a href="./jsp/response">JSP - response</a></li>
+		<li><a href="./jsp/mvc">JSP/Servlet - MVC Model</a></li>
 	</ul>
 </body>
 </html>
