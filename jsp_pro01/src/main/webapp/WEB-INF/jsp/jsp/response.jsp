@@ -37,7 +37,7 @@
 	<h2>sendError()</h2>\
 	<%
 		//response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-		response.sendError(HttpServletResponse.SC_BAD_REQUEST, "잘못된 요청입니다.");
+		//response.sendError(HttpServletResponse.SC_BAD_REQUEST, "잘못된 요청입니다.");
 	%>
 	<p>
 		setStatus() 와 동일한 기능을 수행하나. 별도의 에러페이지를 출력하기 위해서 사용하는 메서드로<br>
