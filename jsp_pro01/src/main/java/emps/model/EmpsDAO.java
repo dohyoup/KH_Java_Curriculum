@@ -18,6 +18,12 @@ public class EmpsDAO {
 		return datas;
 	}
 
+	public List<EmpsDTO> jobsName() {
+		List<EmpsDTO> jobsName = session.selectList("empsMapper.selectJobName");
+		System.out.println(jobsName.toString());
+		return jobsName;
+	}
+	
 	public List<EmpsDTO> selectPage(int start, int end) {
 		String mapId = String.format(mapper, "selectPage");
 		Map<String, Integer> page = new HashMap<String, Integer>();
@@ -57,6 +63,8 @@ public class EmpsDAO {
 		return false;
 	}
 	
+	
+	
 	public void commit() {
 		session.commit();
 	}
@@ -67,6 +75,15 @@ public class EmpsDAO {
 	
 	public void close() {
 		session.close();
+	}
+
+	public boolean insertEmp(EmpsDTO empsData) {
+		String mapId = String.format(mapper, "insertEmp");
+		int result = session.insert(mapId, empsData);
+		if(result == 1) {
+			return true;
+		}
+		return false;
 	}
 
 }

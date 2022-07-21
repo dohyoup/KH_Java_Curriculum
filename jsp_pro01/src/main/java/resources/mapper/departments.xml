@@ -59,6 +59,10 @@
 		SELECT COUNT(*) FROM LOCATIONS
 		 WHERE LOCATION_ID = #{id}
 	</select>
+	<select id="existDeptName" resultType="_int">
+		SELECT COUNT(*) FROM DEPARTMENTS
+		 WHERE DEPARTMENT_NAME = #{name}
+	</select>
 	<insert id="deptInsert" parameterType="deptDto">
 		INSERT INTO DEPARTMENTS
 		     VALUES (#{deptId}, #{deptName}, #{mngId}, #{locId})

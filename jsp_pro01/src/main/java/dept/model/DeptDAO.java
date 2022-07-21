@@ -12,8 +12,11 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.conn.db.DBConn;
 
+import common.model.AbstractDAO;
+
 public class DeptDAO {
 
+	
 	private SqlSession session;
 	
 	public DeptDAO() {
@@ -97,6 +100,14 @@ public class DeptDAO {
 		return false;
 	}
 	
+	public boolean existDeptName(String name) {
+		int result = session.selectOne("deptMapper.existDeptName", name);
+		if(result > 0) {
+			return true;
+		}
+		return false;
+	}
+	
 	public boolean deleteDept(int id) {
 		int result = session.delete("deptMapper.deptDelete", id);
 		
@@ -105,7 +116,6 @@ public class DeptDAO {
 		}
 		return false;
 	}
-	
 	public void commit() {
 		session.commit();
 	}
@@ -117,5 +127,6 @@ public class DeptDAO {
 	public void close() {
 		session.close();
 	}
+
 
 }

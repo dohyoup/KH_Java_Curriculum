@@ -16,7 +16,14 @@ public class EmpsService {
 		
 		return datas;
 	}
-
+	
+	public List<EmpsDTO> getJobName() {
+		EmpsDAO dao = new EmpsDAO();
+		List<EmpsDTO> jobName = dao.jobsName();
+		dao.close();
+		return jobName;
+	}
+	
 	public List<EmpsDTO> getPage(int pageNumber, int count) {
 		int start = (pageNumber - 1) * count + 1;
 		int end = start + count - 1;
@@ -69,5 +76,24 @@ public class EmpsService {
 		}
 		
 	}
+	
+	public boolean add(EmpsDTO empsData, EmpsDetailDTO empsDetailData) {
+		EmpsDAO dao = new EmpsDAO();
+		
+		boolean res1 = dao.insertEmp(empsData);
+		boolean res2 = dao.updateEmpDetail(empsDetailData);
+		
+		if(res1 && res2) {
+			dao.commit();
+			dao.close();
+			return true;
+		} else {
+			dao.rollback();
+			dao.close();
+			return false;
+		}
+		
+	}
+	
 
 }

@@ -39,12 +39,24 @@
 			</colgroup>
 			<thead>
 			<tr>
-				<th>LocationId</th>
-				<th>StreetAddress</th>
-				<th>PostalCode</th>
-				<th>City</th>
-				<th>StateProvince</th>
-				<th>CountryId</th>
+				<th class="${sort == 'locationId' ? 'sort-desc' : ''}"
+				onclick="location.href='./locs?page=${page}&sort=locationId'">LocationId
+				</th>
+				<th class="${sort == 'streetAddress' ? 'sort-desc' : ''}"
+				onclick="location.href='./locs?page=${page}&sort=streetAddress'">StreetAddress
+				</th>
+				<th class="${sort == 'postalCode' ? 'sort-desc' : ''}"
+				onclick="location.href='./locs?page=${page}&sort=postalCode'">PostalCode
+				</th>
+				<th class="${sort == 'city' ? 'sort-desc' : ''}"
+				onclick="location.href='./locs?page=${page}&sort=city'">City
+				</th>
+				<th class="${sort == 'stateProvince' ? 'sort-desc' : ''}"
+				onclick="location.href='./locs?page=${page}&sort=stateProvince'">StateProvince
+				</th>
+				<th class="${sort == 'countryId' ? 'sort-desc' : ''}"
+				onclick="location/href='./locs?page=${page}&sort=countryId'">CountryId
+				</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -61,6 +73,32 @@
 					</c:forEach>
 				</c:if>
 			</tbody>
-		</table>	
+		</table>
+	<c:if test="${not empty pageList}">
+		<c:set var="currentPage" value="${page}"/>
+			<div class="paging">
+				<ul class="page center">
+					<c:if test="${currentPage - 1 > 0 }">
+						<li class="page-item">
+							<a class="page-link" href="./depts?page=${currentPage - 1 }">Prev</a>
+						</li>
+					</c:if>
+					<c:set var="i" value="${currentPage - 1 }"/>	
+					<c:set var="maxPage" value="${i + 5 > pageList.size() ? pageList.size() : i + 5 }"/>
+					<c:forEach begin="${i}" end="${maxPage -1}" var="num">
+						<li class="page-item">
+							<a class="page-link" href="./locs?page=${pageList.get(num)}">${pageList.get(num)}</a>
+						</li>
+					</c:forEach>
+					<c:if test="${currentPage + 1 <= pageList.size()}">
+						<li class="page-item">
+							<a class="page-link" href="./depts?page=${currentPage + 1}">Next</a>
+						</li>
+					</c:if>
+				</ul>
+			</div>
+			
+	
+	</c:if>		
 </body>
 </html>
