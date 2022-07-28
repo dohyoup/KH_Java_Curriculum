@@ -41,6 +41,7 @@ function ajaxImageUpload(e) {
 			previewImg.src = data.src;
 		}
 	});
+
 }
 
 </script>

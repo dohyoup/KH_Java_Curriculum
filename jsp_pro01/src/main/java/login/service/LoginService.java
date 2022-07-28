@@ -1,12 +1,14 @@
 package login.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import emps.model.EmpsDTO;
 import login.model.LoginDAO;
+import login.model.PermDTO;
 
 public class LoginService {
 
@@ -25,14 +27,18 @@ public class LoginService {
 		
 		LoginDAO dao = new LoginDAO();
 		EmpsDTO data = dao.selectLogin(mapData); //sql 검색 -> 직원정보 가지고옴
-		dao.close();
 		
 		
 		if(data == null) {
 			//조회결과 없음
+			dao.close();
 			return false;
 		}else {
 			session.setAttribute("loginData", data);
+			List<PermDTO> perm = dao.selectPerm(data.getEmpId());
+			System.out.println(perm.toString());
+			session.setAttribute("permData", perm);
+			dao.close();
 			return true;
 		}
 	}

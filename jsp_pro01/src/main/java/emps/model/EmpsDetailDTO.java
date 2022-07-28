@@ -30,8 +30,13 @@ public class EmpsDetailDTO {
 	}
 	
 	public void setHireDate(String hireDate) {
-		// 년-월-일 형식만 저장가능
-		this.hireDate = Date.valueOf(hireDate);
+		if(hireDate == null) {
+			this.hireDate = new Date(new java.util.Date().getTime());
+		} else if(hireDate.isEmpty()) {
+			this.hireDate = new Date(new java.util.Date().getTime());
+		} else {
+			this.hireDate = Date.valueOf(hireDate);
+		}
 	}
 	
 	public String getPhone() {
@@ -51,6 +56,8 @@ public class EmpsDetailDTO {
 	}
 	
 	public void setSalary(String salary) {
+		if(salary == null) salary = "0";
+		if(salary.isEmpty()) salary = "0";
 		this.salary = Integer.parseInt(salary);
 	}
 	
@@ -59,14 +66,14 @@ public class EmpsDetailDTO {
 	}
 	
 	public void setCommission(double commission) {
-		if(commission > 1) {
-			commission /= 100;
-		}
+		if(commission > 1) commission /= 100;
 		this.commission = commission;
 	}
 	
 	public void setCommission(String commission) {
-		this.commission = Double.parseDouble(commission);
+		if(commission == null) commission = "0";
+		if(commission.isEmpty()) commission = "0";
+		setCommission(Double.parseDouble(commission));
 	}
 	
 	@Override
@@ -76,4 +83,3 @@ public class EmpsDetailDTO {
 	}
 	
 }
-

@@ -12,30 +12,31 @@ public class EmpsDAO {
 	private SqlSession session = DBConn.getSqlSession();
 	private String mapper = "empsMapper.%s";
 	
+	public Map<String, Integer> checkSalaryRange(String id) {
+		String mapId = String.format(mapper, "checkSalaryRange");
+		Map<String, Integer> data = session.selectOne(mapId, id);
+		return data;
+	}
+	
 	public List<EmpsDTO> selectAll() {
 		String mapId = String.format(mapper, "selectAll");
 		List<EmpsDTO> datas = session.selectList(mapId);
 		return datas;
 	}
 
-	public List<EmpsDTO> jobsName() {
-		List<EmpsDTO> jobsName = session.selectList("empsMapper.selectJobName");
-		System.out.println(jobsName.toString());
-		return jobsName;
-	}
-	
-	public List<EmpsDTO> selectPage(int start, int end) {
+	public List<EmpsDTO> selectPage(int id, int start, int end) {
 		String mapId = String.format(mapper, "selectPage");
 		Map<String, Integer> page = new HashMap<String, Integer>();
+		page.put("deptId", id);
 		page.put("start", start);
 		page.put("end", end);
 		List<EmpsDTO> datas = session.selectList(mapId, page);
 		return datas;
 	}
 	
-	public int rowCount() {
+	public int rowCount(int id) {
 		String mapId = String.format(mapper, "rowCount");
-		int count = session.selectOne(mapId);
+		int count = session.selectOne(mapId, id);
 		return count;
 	}
 	
@@ -63,8 +64,6 @@ public class EmpsDAO {
 		return false;
 	}
 	
-	
-	
 	public void commit() {
 		session.commit();
 	}
@@ -84,6 +83,18 @@ public class EmpsDAO {
 			return true;
 		}
 		return false;
+	}
+
+	public EmpsDTO selectId(int id) {
+		String mapId = String.format(mapper, "selectId");
+		EmpsDTO data = session.selectOne(mapId, id);
+		return data;
+	}
+
+	public boolean deleteId(int id) {
+		String mapId = String.format(mapper, "deleteId");
+		int result = session.delete(mapId, id);
+		return result == 1 ? true : false;
 	}
 
 }

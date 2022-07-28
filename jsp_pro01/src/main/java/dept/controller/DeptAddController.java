@@ -1,15 +1,19 @@
 package dept.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dept.model.DeptDTO;
 import dept.service.DEPT_SERVICE_STATUS;
 import dept.service.DeptService;
+import login.model.PermDTO;
 
 @WebServlet("/depts/add")
 public class DeptAddController extends HttpServlet {
@@ -23,6 +27,23 @@ public class DeptAddController extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		// 파라미터로 부서탭에 접근하려하면 서버에서 거부하도록 하는 코드
+		boolean isPerm = false;
+		List<PermDTO> perms =(List<PermDTO>)session.getAttribute("permData");
+		for(PermDTO perm: perms) {
+			if(perm.getTableName().equals("departments")) {
+				isPerm = perm.ispAdd();
+				
+			}
+		}
+		if(!isPerm) {
+			response.sendError(HttpServletResponse.SC_FORBIDDEN);
+			return;
+		}
+		// 여기까지
+		
+		
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		String deptId = request.getParameter("deptId");

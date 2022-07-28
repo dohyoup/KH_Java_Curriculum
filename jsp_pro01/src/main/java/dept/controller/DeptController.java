@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import dept.model.DeptDTO;
 import dept.service.DeptService;
+import login.model.PermDTO;
 import oracle.jdbc.internal.XSCacheOutput;
 
 @WebServlet("/depts")
@@ -23,13 +24,29 @@ public class DeptController extends HttpServlet {
 	private DeptService service = new DeptService();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String view = "/WEB-INF/jsp/dept/index.jsp";
 		String search = request.getParameter("search");
 		String page = request.getParameter("page");
 		String sort = "deptId";
 		int count = 5;
 		
-		HttpSession session = request.getSession();//세션생성
+		HttpSession session = request.getSession();
+		// 파라미터로 부서탭에 접근하려하면 서버에서 거부하도록 하는 코드
+		boolean isPerm = false;
+		List<PermDTO> perms =(List<PermDTO>)session.getAttribute("permData");
+		for(PermDTO perm: perms) {
+			if(perm.getTableName().equals("departments")) {
+				isPerm = perm.ispRead();//내가준 권한값이 넘어옴
+				System.out.println(isPerm);
+			}
+		}
+		if(!isPerm) {
+			response.sendError(HttpServletResponse.SC_FORBIDDEN);
+			return;
+		}  
+		// 여기까지
+		
 		if(session.getAttribute("pgc") != null) {//값 가져오기
 			count = Integer.parseInt(session.getAttribute("pgc").toString());
 		}
