@@ -11,44 +11,11 @@
 	<%@ include file="./module/head.jsp" %>
 </head>
 <script type="text/javascript">
-	function snedAjax() {
-		$.ajax({
-			type: "get",
-			url: "/ajax/test",
-			data: {
-				x:"Hello",
-				y: 1234
-			},
-			dataType: "json",
-			success: function(data, status) {
-				// 서버로 부터의 응답 코드가 200 번일 때 동작할 함수 작성
-				// data: 서버로 부터 받은 데이터 정보를 가지고 있는 객체
-				// status: 응답 코드 
-				console.log("success: " + data);
-				console.log("success: " + data.attributeName);
-				console.log("success: " + status);
-			},
-			error: function(data, status) {
-				// 서버로 부터의 응답 코드가 200 이 아닌 번대일 때 동작할 함수 작성
-				// data: 서버로 부터 받은 데이터 정보를 가지고 있는 객체
-				// status: 응답 코드
-				console.log("error: " + data);
-				console.log("error: " + status);
-			},
-			complete: function(data, status) {
-				// 통신 성공 여부와 관계 없이 완료후 동작할 함수 작성 (무조건 동작해야하는 기능)
-				console.log("complete: " + data);
-				console.log("complete: " + status);
-			}	
-		});
-	}
+	
 </script>
 <body>
 	<%@ include file="/WEB-INF/jsp/module/navigation.jsp" %>
 	<section class="container">
-		<div>
-			<button type="button" onclick="snedAjax()">비동기 통신</button>
-		</div>
 		<c:url var="loginUrl" value="/login" />
 		<form class="small-form" action="${loginUrl}" method="post">
 			<div class="input-form wide">
@@ -78,6 +45,10 @@
 			</div>
 			<div class="input-form wide form-right">
 				<button class="btn btn-outline btn-ok" type="submit">로그인</button>
+			</div>
+			<div>
+				<label class="input-label">로그인 유지</label>
+				<input type="checkbox" name="useCookie">
 			</div>
 		</form>
 	</section>

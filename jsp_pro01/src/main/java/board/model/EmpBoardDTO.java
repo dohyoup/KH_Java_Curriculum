@@ -3,11 +3,12 @@ package board.model;
 import java.sql.Date;
 
 public class EmpBoardDTO {
-	
+
 	private int id;
 	private String title;
-	private int empId;
 	private String content;
+	private int empId;
+	private String empName;
 	private Date createDate;
 	private int viewCnt;
 	private int like;
@@ -28,6 +29,14 @@ public class EmpBoardDTO {
 		this.title = title;
 	}
 	
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 	public int getEmpId() {
 		return empId;
 	}
@@ -36,14 +45,14 @@ public class EmpBoardDTO {
 		this.empId = empId;
 	}
 	
-	public String getContent() {
-		return content;
+	public String getEmpName() {
+		return empName;
 	}
-	
-	public void setContent(String content) {
-		this.content = content;
+
+	public void setEmpName(String empName) {
+		this.empName = empName;
 	}
-	
+
 	public Date getCreateDate() {
 		return createDate;
 	}
@@ -51,7 +60,7 @@ public class EmpBoardDTO {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-
+	
 	public int getViewCnt() {
 		return viewCnt;
 	}
@@ -67,15 +76,11 @@ public class EmpBoardDTO {
 	public void setLike(int like) {
 		this.like = like;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "EmpBoardDTO [id=" + id + ", title=" + title + ", empId=" + empId + ", content=" + content
-				+ ", createDate=" + createDate + ", viewCnt=" + viewCnt + ", like=" + like + "]";
+		return "EmpBoardDTO [id=" + id + ", title=" + title + ", content=" + content + ", empId=" + empId + ", empName="
+				+ empName + ", createDate=" + createDate + ", viewCnt=" + viewCnt + ", like=" + like + "]";
 	}
-	
-	
-	
-	
-	
+
 }

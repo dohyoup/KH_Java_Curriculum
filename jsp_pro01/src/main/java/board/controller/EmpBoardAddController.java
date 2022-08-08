@@ -14,34 +14,43 @@ import board.model.EmpBoardDTO;
 import board.service.EmpBoardService;
 import emps.model.EmpsDTO;
 
-
 @WebServlet("/board/add")
 public class EmpBoardAddController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-		EmpBoardService service = new EmpBoardService();
+	
+	private EmpBoardService service = new EmpBoardService();
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String view = "/WEB-INF/jsp/board/add.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(view);
 		rd.forward(request, response);
 	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(); 
+		//세션생성
+		HttpSession session = request.getSession();
+		//게시글 입력값 받아오기
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
+		//게시글 입력값 저장
 		EmpBoardDTO data = new EmpBoardDTO();
 		data.setTitle(title);
 		data.setContent(content);
+		//empId는 EMPLOYEES테이블의 ID값을 참조하는 외래키이기 때문에 EmpsDTO에서 가져와야함
+		// 세션에 저장되어있는 로그인데이터에서 EMPID값을 가져온다.
 		data.setEmpId(((EmpsDTO)session.getAttribute("loginData")).getEmpId());
 		
-		int boardId = service.add(data); //추가된 게시글 번호 반환 
+		int boardId = service.add(data);
 		if(boardId > 0) {
-			//정상적으로 게시글이 등록
+			// 정상적으로 게시글이 등록됨
 			response.sendRedirect(request.getContextPath() + "/board/detail?id=" + boardId);
-		}else {
-			//게시글 번호가 0보다 작거나 같으면 문제가 있다.
+			System.out.println(request.getContextPath());
+		} else {
+			// 게시글 번호가 0 보다 작거나 같으면 문제가 있음.
 			doGet(request, response);
 		}
 	}
 
 }
+

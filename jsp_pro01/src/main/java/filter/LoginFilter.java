@@ -20,7 +20,8 @@ import javax.servlet.http.HttpSession;
 		urlPatterns = {
 				"/myinfo", "/depts", "/locs",
 				"/depts/*","/locs/*","/emps", "/emps/*",
-				"/board/add"
+				"/board", "/board/*",
+				"/comment/add"
 				
 		}
 )

@@ -11,5 +11,8 @@
 </head>
 <body>
 	<h1>${error}</h1>
+		<div>
+			<button type="button" onclick="location='/board/add'">추가하기</button>
+		</div>
 </body>
 </html>

@@ -14,10 +14,12 @@ CREATE TABLE EMP_BOARDS (
 );
 
 CREATE SEQUENCE EMP_BOARDS_SEQ NOCACHE;
-/* 수정 전 테이블로 테스트를 한 경우 아래의 쿼리를 실행하여 컬럼을 추가하세요.
+
+수정 전 테이블로 테스트를 한 경우 아래의 쿼리를 실행하여 컬럼을 추가하세요.
 ALTER TABLE EMP_BOARDS ADD VIEW_CNT NUMBER DEFAULT(0);
 ALTER TABLE EMP_BOARDS ADD "LIKE" NUMBER DEFAULT(0);
-*/
+
+
 -- 게시판 글을 등록하기 전에 ID 번호를 자동 생성하여 가져오기 위한 쿼리
 SELECT EMP_BOARDS_SEQ.NEXTVAL FROM DUAL;
 

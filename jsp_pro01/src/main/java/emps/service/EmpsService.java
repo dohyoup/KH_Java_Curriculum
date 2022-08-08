@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import board.model.EmpBoardDTO;
 import emps.model.EmpsDAO;
 import emps.model.EmpsDTO;
 import emps.model.EmpsDetailDTO;
@@ -145,9 +146,10 @@ public class EmpsService {
 		} else {
 			dao.rollback();
 		}
-		dao.close();
 		return result;
 	}
+
+	
 
 }
 

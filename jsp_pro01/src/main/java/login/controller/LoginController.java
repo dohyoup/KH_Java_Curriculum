@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,7 +31,6 @@ public class LoginController extends HttpServlet {
 		String deptId = request.getParameter("deptId");
 		String empName = request.getParameter("empName");
 		HttpSession session = request.getSession();
-		
 		
 		LoginService loginService = new LoginService();
 		boolean result = loginService.getLogin(session, empId, deptId, empName);

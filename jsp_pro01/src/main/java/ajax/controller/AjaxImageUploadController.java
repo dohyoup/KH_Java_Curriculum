@@ -28,7 +28,7 @@ public class AjaxImageUploadController extends HttpServlet {
 		//getRealPath() : ServletContext의 getRealPath는 웹어플리케이션이 실행된 곳. 즉 설치된 곳의 경로를 찾음
 		Part part = request.getPart("uploadImage");
 		System.out.println(part.toString());
-		if(!part.getSubmittedFileName().isEmpty()) {//업로드한 파일명이 비어있으면
+		if(!part.getSubmittedFileName().isEmpty()) {//업로드한 파일명이 비어있지 않으면
 			String realPath = request.getServletContext().getRealPath("/static/img/emp/");
 			part.write(realPath + empsData.getEmpId() + ".png");
 			
