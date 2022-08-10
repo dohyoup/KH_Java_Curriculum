@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="locsMapper">
+<select id="locsSelectAll" resultType="locsDto">
+		SELECT LOCATION_ID AS locationId
+			 , STREET_ADDRESS AS streetAddress
+			 , POSTAL_CODE AS postalCode
+			 , CITY AS city
+			 , STATE_PROVINCE AS stateProvince
+			 , COUNTRY_ID AS countryId
+		 FROM LOCATIONS	  
+	</select>
+	<select id="locsSelectId" resultType="locsDto">
+		SELECT LOCATION_ID AS locationId
+			 , STREET_ADDRESS AS streetAddress
+			 , POSTAL_CODE AS postalCode
+			 , CITY AS city
+			 , STATE_PROVINCE AS stateProvince
+			 , COUNTRY_ID AS countryId
+		 FROM LOCATIONS
+		WHERE LOCATION_ID = #{id} 	 
+	</select>
+	<select id="selectPage" parameterType="map" resultType="locsDto">
+		SELECT *
+		  FROM (SELECT RN
+		  			 , locationId
+		  			 , streetAddress
+		  			 , postalCode
+		  			 , city 
+		  			 , stateProvince
+		  			 , countryId
+		  		FROM (SELECT ROWNUM AS RN
+		  				   , LOCATION_ID AS locationId
+		  				   , STREET_ADDRESS AS streetAddress
+		  				   , POSTAL_CODE AS postalCode 
+		  				   , CITY AS city
+		  				   , STATE_PROVINCE AS stateProvince
+		  				   , COUNTRY_ID AS countryId
+		  			   FROM LOCATIONS
+		  			    <choose>
+				          		<when test="sort == 1">
+				          		 ORDER By locationId DESC
+				          		</when>
+				          		<when test="sort == 2">
+				          		 ORDER By streetAddress DESC
+				          		</when>
+				          		<when test="sort == 3">
+				          		 ORDER By postalCode DESC
+				          		</when>
+				          		<when test="sort == 4">
+				          		 ORDER By city DESC
+				          		</when>
+				          		<when test="sort == 5">
+				          		 ORDER By stateProvince DESC
+				          		</when>
+				          		<when test="sort == 6">
+				          		 ORDER By countryId DESC
+				          		</when>
+				          </choose>
+				           )
+			  )
+			WHERE RN BETWEEN #{start} AND #{end}	           
+	</select>
+	<select id="locsRowCount" resultType="_int">
+		SELECT COUNT(*) FROM LOCATIONS
+	</select>
+</mapper>	
