@@ -37,22 +37,22 @@
 		     , VIEWED
 		     , LATEST_VIEW_DATE AS latestViewDate
 		     , LIKED
-		  FROM EMP_BOARDS_STATICS
+		  FROM MEP_BOARDS_STATICS
 		 WHERE EMPID = #{empId}
 		   AND BID = #{bId}
 	</select>
 	<insert id="insertStatics" parameterType="boardStaticsDto">
-		INSERT INTO EMP_BOARDS_STATICS
-		     VALUES(EMP_BOARDS_STATICS_SEQ.NEXTVAL
+		INSERT INTO MEP_BOARDS_STATICS
+		     VALUES(MEP_BOARDS_STATICS_SEQ.NEXTVAL
 		          , #{empId}, #{bId}, 'Y', SYSDATE, 'N')
 	</insert>
 	<update id="updateStatics" parameterType="boardStaticsDto">
-		UPDATE EMP_BOARDS_STATICS
+		UPDATE MEP_BOARDS_STATICS
 		   SET LATEST_VIEW_DATE = SYSDATE
 		 WHERE ID = #{id}
 	</update>
 	<update id="updateStaticsLike" parameterType="boardStaticsDto">
-		UPDATE EMP_BOARDS_STATICS
+		UPDATE MEP_BOARDS_STATICS
 		<choose>
 			<when test="liked">
 				SET LIKED = 'Y'
@@ -76,7 +76,7 @@
 		 ORDER BY B.ID DESC
 	</select>
 	<delete id="deleteStaticsData">
-		DELETE FROM EMP_BOARDS_STATICS
+		DELETE FROM MEP_BOARDS_STATICS
 		 WHERE BID = #{bId}
 	</delete>
 	<delete id="deleteData">

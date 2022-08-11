@@ -52,6 +52,17 @@ public class BoardDAO {
 		return res == 1 ? true : false;
 	}
 	
+	public boolean deleteStaticsData(BoardStaticsDTO data) {
+		String mapperId = String.format(mapper, "deleteStaticsData");
+		int res = session.delete(mapperId, data);
+		return res >= 0 ? true : false;
+	}
+	
+	public boolean deleteData(BoardDTO data) {
+		String mapperId = String.format(mapper, "deleteData");
+		int res = session.delete(mapperId, data);
+		return res == 1 ? true : false;
+	}
 	/*
 	
 	public boolean updateViewCnt(BoardDTO data) {
@@ -90,16 +101,6 @@ public class BoardDAO {
 		return res == 1 ? true : false;
 	}
 	
-	public boolean deleteStaticsData(BoardStaticsDTO data) {
-		String mapperId = String.format(mapper, "deleteStaticsData");
-		int res = session.delete(mapperId, data);
-		return res >= 0 ? true : false;
-	}
 	
-	public boolean deleteData(BoardDTO data) {
-		String mapperId = String.format(mapper, "deleteData");
-		int res = session.delete(mapperId, data);
-		return res == 1 ? true : false;
-	}
 	*/
 }
