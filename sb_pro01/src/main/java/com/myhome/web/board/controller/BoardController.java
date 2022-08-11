@@ -61,12 +61,14 @@ public class BoardController {
 	
 	@GetMapping(value="/detail")
 	public String getDetail(Model model
+			, HttpSession session
 			, @RequestParam int id) {
 		logger.info("getDetail(id={})", id);
 		
 		BoardDTO data = service.getData(id);
 		
 		if(data != null) {
+			service.incViewCnt(session, data);
 			model.addAttribute("data", data);
 			return "board/detail";			
 		} else {
@@ -75,6 +77,7 @@ public class BoardController {
 		}
 			
 	}
+	
 	
 	@GetMapping(value="/add")
 	public String add() {
@@ -149,6 +152,7 @@ public class BoardController {
 		}
 	}
 	//ajax 사용법
+	@SuppressWarnings("unchecked")
 	@PostMapping(value="/delete", produces="application/json; charset=utf-8")
 	@ResponseBody //본문에 추가할 순수한 데이터
 	public String delete(@SessionAttribute("loginData") EmpDTO empDto
@@ -182,4 +186,24 @@ public class BoardController {
 		}
 		return json.toJSONString();
 	}
+	@PostMapping(value="/like", produces="application/json; charset=utf-8")
+	@ResponseBody
+	public String like(HttpSession session
+			, @RequestParam int id) {
+		logger.info("like(id={})", id);
+		
+		BoardDTO data = service.getData(id);
+		JSONObject json = new JSONObject();
+		if(data ==null) {
+			//존재하지 않음
+			json.put("code", "noData");
+			json.put("message", "해당 데이터가 존재하지 않습니다.");
+		}else {
+			service.incLike(session, data);
+			json.put("code", "success");
+			json.put("like", data.getLike());
+		}
+		return json.toJSONString();
+	}
+	
 }
