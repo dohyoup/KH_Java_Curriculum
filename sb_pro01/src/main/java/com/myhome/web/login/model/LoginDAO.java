@@ -15,13 +15,11 @@ import com.myhome.web.login.service.LoginService;
 @Repository
 public class LoginDAO {
 	
-	private static final Logger logger = LoggerFactory.getLogger(LoginDAO.class);
 
 	@Autowired
 	private SqlSession session;
 	
 	public EmpDTO selectLogin(EmpDTO data) {
-		logger.info("selectLogin({})", data);
 		EmpDTO result = session.selectOne("loginMapper.selectLogin", data);
 		return result;
 	}

@@ -29,7 +29,6 @@ public class CommentDelete extends HttpServlet {
 		StringBuilder sb = new StringBuilder();
 		sb.append("{");
 			//댓글작성자 id  == 로그인한 사용자 id 일때만 삭제요청 동작
-		System.out.println((String.format("\"%s\": \"%s\"", "code", "success")));
 		if(commentData.getEmpId() == empData.getEmpId()) {
 			boolean result = service.remove(commentData);
 			if(result) {

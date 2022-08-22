@@ -118,11 +118,11 @@
 				</div>
 			</c:forEach>
 			<div class="mb-1">
-				<form action="/comment/add" method="post">
+				<form id="comment_add" action="/comment/add" method="post">
 					<input type="hidden" name="bid" value="${data.id}">
 					<div class="input-group">
 						<textarea class="form-control" name="content" rows="2"></textarea>
-						<button class="btn btn-outline-dark" type="button" onclick="formCheck(this.form);">등록</button>
+						<button class="btn btn-outline-dark" type="button" onclick="formCheck();">등록</button>
 					</div>
 				</form>
 			</div>
@@ -212,11 +212,32 @@
 				}
 			});
 		}
+		<%--
 		function formCheck(form) {
 			if(form.content.value.trim() === "") {
 				alert("댓글 내용을 입력하세요.");
 			} else {
 				form.submit();
+			}
+		}
+		--%>
+		function formCheck() {
+			var form = $('#comment_add');
+			console.log(form);
+			if(form.content.value.trim() === "") {
+				alert("댓글 내용을 입력하세요.");
+			} else {
+				var param = form.serialize();
+				console.log(param);
+				$.ajax({
+					url: "/comment/add",
+					type: "post",
+					data: param,
+					success: function(data) {
+						element.parentElement.previousElementSibling.children[0].value = data.value
+						changeText(element);
+					}
+				});
 			}
 		}
 		function deleteBoard(boardId) {

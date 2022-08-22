@@ -14,13 +14,11 @@ import com.myhome.web.login.vo.LoginVO;
 @Service
 public class LoginService {
 	
-	private static final Logger logger = LoggerFactory.getLogger(LoginService.class);
 
 	@Autowired
 	private LoginDAO dao;
 	
 	public boolean getLogin(HttpSession session, LoginVO loginVo) {
-		logger.info("getLogin({}, {})", session, loginVo);
 		
 		EmpDTO data = new EmpDTO();
 		data.setEmpId(loginVo.getEmpId());

@@ -32,6 +32,16 @@
 					<label id="id_like" class="text-secondary text-opacity-75">${data.like}</label>
 				</div>
 			</div>
+			<div>
+				<ul class=" col-4 ms-auto list-group">
+				<c:forEach items="${fileDatas}" var="file">
+					<c:url var="downUrl" value="${file.url}/${file.uuidName}" />
+					<li class="list-group-item text-truncate">
+						<a class="text-info text-decoration-none" href="${downUrl}" download="${file.fileName}">${file.fileName}</a><br>
+					</li>
+				</c:forEach>
+				</ul>
+			</div>
 			<div class="mb-1 text-end">
 				<c:url var="boardUrl" value="/board" />
 				<button class="btn btn-primary" type="button" onclick="location.href='${boardUrl}'">목록</button>
@@ -85,12 +95,12 @@
 								</c:when>
 								<c:otherwise>
 									<c:set var="newLine" value="<%= \"\n\" %>" />
-									<p class="card-text">${fn:replace(comment.content, newLine, '<br>')}</p>
+										<p class="card-text">${fn:replace(comment.content, newLine, '<br>')}</p>
 								</c:otherwise>
 							</c:choose>
 							<c:if test="${sessionScope.loginData.empId eq comment.empId}">
 								<c:if test="${not comment.isDeleted()}">
-									<div class="text-end">
+									<div class="text-end" >
 										<button class="btn btn-sm btn-outline-dark" type="button" onclick="changeEdit(this);">수정</button>
 										<button class="btn btn-sm btn-outline-dark" type="button" onclick="commentDelete(this, ${comment.id})">삭제</button>
 									</div>
@@ -101,11 +111,11 @@
 				</div>
 			</c:forEach>
 			<div class="mb-1">
-				<form action="${boardUrl}/comment/add" method="post">
+				<form id="comment_add" action="/comment/add" method="post">
 					<input type="hidden" name="bid" value="${data.id}">
 					<div class="input-group">
 						<textarea class="form-control" name="content" rows="2"></textarea>
-						<button class="btn btn-outline-dark" type="button" onclick="formCheck(this.form);">등록</button>
+						<button class="btn btn-outline-dark" type="button" onclick="formCheck();">등록</button>
 					</div>
 				</form>
 			</div>
@@ -134,13 +144,13 @@
 			element.innerText = "확인";
 			element.nextElementSibling.remove();
 			
-			var value = element.parentElement.previousElementSibling.innerText;
-			var textarea = document.createElement("textarea");
+			var value = element.parentElement.previousElementSibling.innerText; // 만들기<p>태그
+			var textarea = document.createElement("textarea");//동적요소textarea를 만들어서 변수에 추가만해둔거 아직 적용된거아님
 			textarea.setAttribute("class", "form-control");
 			textarea.value = value;
 			
 			element.parentElement.previousElementSibling.innerText = "";
-			element.parentElement.previousElementSibling.append(textarea);
+			element.parentElement.previousElementSibling.append(textarea);// p태그의 택스트로서 추가작업
 			
 			element.setAttribute("onclick", "commentUpdate(this);");
 		}
@@ -161,19 +171,48 @@
 			element.setAttribute("onclick", "changeEdit(this);");
 		}
 		
+		function formCheck() {
+			var form = $('#comment_add');
+			if($('textarea[name="content"]').val() === "") {
+				alert("댓글 내용을 입력하세요.");
+			} else {
+				var param = form.serialize();
+				$.ajax({
+					url: "/web/comment/add",
+					type: "post",
+					data: param,
+					dataType: 'json',
+					success: function(data) {
+						//TODO 서버에서 오는 데이터 보고 성공 실패 여부에 따라 분기처리
+						console.log(data);
+						//location.reload();
+						if (data != null) {
+							if (data.data != '') {
+								location.href = data.data;
+							} else {
+								location.href = '/web/error';
+							}
+						}
+					}
+				});
+			}
+		}
+		
 		function commentUpdate(element) {
-			var cid = element.parentElement.parentElement.children[0].value;
+			var cid = element.parentElement.parentElement.children[0].value;//input
 			var value = element.parentElement.previousElementSibling.children[0].value;
 			
 			$.ajax({
-				url: "/comment/modify",
+				url: "/web/comment/modify",
 				type: "post",
 				data: {
 					id: cid,
 					content: value
 				},
+				dataType: "json",
 				success: function(data) {
-					element.parentElement.previousElementSibling.children[0].value = data.value
+					//element.parentElement.previousElementSibling.children[0].value = data.value
+					element.parentElement.parentElement.children[0].value = data.value
 					changeText(element);
 				}
 			});
@@ -181,25 +220,24 @@
 		
 		function commentDelete(element, id) {
 			$.ajax({
-				url: "/comment/delete",
+				url: "/web/comment/delete",
 				type: "post",
 				data: {
 					id: id
 				},
+				dataType: "json",
 				success: function(data) {
 					if(data.code === "success") {
+						if(confirm("댓글을 삭제하시겠습니까?") == true){
 						element.parentElement.parentElement.parentElement.parentElement.remove();
+						}
+					}else{
+						alert("삭제에 실패하였습니다.");
 					}
 				}
 			});
 		}
-		function formCheck(form) {
-			if(form.content.value.trim() === "") {
-				alert("댓글 내용을 입력하세요.");
-			} else {
-				form.submit();
-			}
-		}
+		
 		function deleteBoard(boardId) {
 			$.ajax({
 				url: "${boardUrl}/delete",
