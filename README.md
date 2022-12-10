@@ -1,11 +1,11 @@
-# bug-free-disco
+# KH_Java_Curriculum
 
-README 수정.
+:star2: Git 연동 및 버전관리 연습시작
 
-작성자 정보 변경.
+:star2: Java 기본 문법 
 
-???
+:star2: Oracle SQL(Mybatis)
 
-github 사이트에서 수정을 해봄.
+:star2: JavaScript(jQuery), HTML, CSS
 
-깃허브 오류내용 추적
+:star2: Spring Framework
