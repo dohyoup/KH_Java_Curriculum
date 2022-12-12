@@ -9,3 +9,5 @@
 :star2: JavaScript(jQuery), HTML, CSS
 
 :star2: Spring Framework
+
+:point_right: [교육정보 및 활동인증](https://www.notion.so/87662a3c2aef4ac7a1a38a7af370cd5f?p=9c1cadc99b1444fea2d8cc5423b5a87b&pm=c)
